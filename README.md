@@ -6,6 +6,7 @@
 
 ## General Info
 This browser based web application to ...
+* Hi my name is Tracy. I'm trying to create a git conflict.
 	
 ## Technologies
 Technologies used for this project:
