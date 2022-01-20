@@ -5,10 +5,17 @@
 - [Contents](#content)
 
 ## General Info
+<<<<<<< HEAD
 
 This browser based web application to ... \*
 yo what up fam - alex
 
+=======
+This browser based web application to ...
+* Hi, my name is Jackie. I'm excited about this project because ...
+* Hi my name is Tracy. I'm trying to create a git conflict.
+	
+>>>>>>> c8481df50e407e1f50106e8d24106724beb23ed9
 ## Technologies
 
 Technologies used for this project:
