@@ -40,14 +40,46 @@
   </div>
 
   <!-- Hero banner -->
-  <div class="px-4 py-5 my-5 text-center">
-    <h1 class="display-5 fw-bold">Welcome to our app</h1>
+  <div class="px-4 py-5 my-5">
+    <h1 class="display-5 fw-bold text-center">Welcome to our app</h1>
     <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Start searching for food.</p>
+      <p class="lead mb-4 text-center">Start searching for food.</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <form class="d-flex" action="/search.html">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        <form class="container" action="/search.html">
+          <div class="row py-2">
+            <div class="col-10">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            </div>
+            <div class="col-2">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </div>
+          </div>
+          <div class="row py-2">
+            <div class="col">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="foodQualitySwitch">
+                <label class="form-check-label" for="foodQualitySwitch">Food Quality</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="valueSwitch">
+                <label class="form-check-label" for="valueSwitch">Value</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="serviceSwitch">
+                <label class="form-check-label" for="serviceSwitch">Service</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="languageSwitch">
+                <label class="form-check-label" for="languageSwitch">Language Independancy</label>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
     </div>
