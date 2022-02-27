@@ -53,12 +53,44 @@
   <div class="px-4 py-5 my-5 text-center">
     <div class="col-lg-6 mx-auto">
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <!-- <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Search</button> -->
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        <form id="searchForm" class="container" action="/search.html">
+          <div class="row py-2">
+            <div class="col-10">
+              <input id="searchBar" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            </div>
+            <div class="col-2">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </div>
+          </div>
+          <div class="row py-2">
+            <div class="col">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="foodSwitch">
+                <label class="form-check-label" for="foodSwitch">Food Quality</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="valueSwitch">
+                <label class="form-check-label" for="valueSwitch">Value</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="serviceSwitch">
+                <label class="form-check-label" for="serviceSwitch">Service</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="languageSwitch">
+                <label class="form-check-label" for="languageSwitch">Language Independancy</label>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
+      <div id="resultsPlaceholder"></div>
     </div>
   </div>
 
@@ -66,6 +98,8 @@
   <div class="fixed-bottom footer-copyright text-center text-black-50 py-3">C 2022 Copyright:
     <a class="dark-grey-text" href="_blank2">website.com</a>
   </div>
+  <script src="./scripts/cacheFilter.js"></script>
+  <script src="./scripts/applyFilter.js"></script>
 </body>
 
 </html>
