@@ -151,9 +151,40 @@ if (queryFilter.length == 0) {
   document.getElementById("resultsPlaceholder").appendChild(nothingFound);
 }
 else {
-  queryFilter.forEach(element => {
-    const restaurant = document.createElement("h2");
-    restaurant.innerText = element.name;
-    document.getElementById("resultsPlaceholder").appendChild(restaurant);
+  const cardPlacehoder = document.getElementById("resultsPlaceholder");
+  
+  queryFilter.forEach((element, index) => {
+    // const restaurant = document.createElement("h2");
+    // restaurant.innerText = element.name;
+    // document.getElementById("resultsPlaceholder").appendChild(restaurant);
+
+    const card = document.createElement("div");
+    card.id = "card" + index;
+    cardPlacehoder.appendChild(card);
+
+    $(`#${card.id}`).load("./card.html", function() {
+      console.log("callback" + index + " function loaded");
+      // console.log("restname?", document.getElementById("restName"));
+      document.getElementById("restName").innerHTML = element.name;
+      document.getElementById("restName").id = "restName" + index;
+
+      const i = parseInt((element.food[0] / (element.food[0] + element.food[1]) * 100));
+      document.getElementById("restFood").innerHTML = "Food Quality: " + i + "% &#128077;";
+      document.getElementById("restFood").id = "restFood" + index;
+
+      const j = parseInt((element.value[0] / (element.value[0] + element.value[1]) * 100));
+      document.getElementById("restValue").innerHTML = "Value: " + j + "% &#128077;";
+      document.getElementById("restValue").id = "restValue" + index;
+
+      const k = parseInt((element.service[0] / (element.service[0] + element.service[1]) * 100));
+      document.getElementById("restService").innerHTML = "Service: " + k + "% &#128077;";
+      document.getElementById("restService").id = "restService" + index;
+
+      const l = parseInt((element.language[0] / (element.language[0] + element.language[1]) * 100));
+      document.getElementById("restLanguage").innerHTML = "Language Independency: " + l + "% &#128077;";
+      document.getElementById("restLanguage").id = "restLanguage" + index;
+
+    });
+
   })
 }
