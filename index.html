@@ -52,7 +52,7 @@
         <form id="searchForm" class="container" action="./search.html">
           <div class="row py-2">
             <div class="col-10">
-              <input id="searchBar" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <input id="searchBar" class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
             </div>
             <div class="col-2">
               <button class="btn btn-outline-success" type="submit">Search</button>
@@ -61,25 +61,25 @@
           <div class="row py-2">
             <div class="col">
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="foodSwitch">
+                <input class="form-check-input" name="food" type="checkbox" role="switch" id="foodSwitch">
                 <label class="form-check-label" for="foodSwitch">Food Quality</label>
               </div>
             </div>
             <div class="col">
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="valueSwitch">
+                <input class="form-check-input" name="value" type="checkbox" role="switch" id="valueSwitch">
                 <label class="form-check-label" for="valueSwitch">Value</label>
               </div>
             </div>
             <div class="col">
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="serviceSwitch">
+                <input class="form-check-input" name="service" type="checkbox" role="switch" id="serviceSwitch">
                 <label class="form-check-label" for="serviceSwitch">Service</label>
               </div>
             </div>
             <div class="col">
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="languageSwitch">
+                <input class="form-check-input" name="language" type="checkbox" role="switch" id="languageSwitch">
                 <label class="form-check-label" for="languageSwitch">Language Independancy</label>
               </div>
             </div>
@@ -93,7 +93,6 @@
   <div class="fixed-bottom footer-copyright text-center text-black-50 py-3">C 2022 Copyright:
     <a class="dark-grey-text" href="_blank2">website.com</a>
   </div>
-  <script src="./scripts/cacheFilter.js"></script>
 </body>
 
 </html>

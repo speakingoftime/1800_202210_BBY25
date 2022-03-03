@@ -98,7 +98,24 @@ let dummyData = {
   ]
 }
 
-// Auto-fill form from localStorage
+// Parse query from url
+const queryString = window.location.search;
+const queryValues = queryString.slice(1,queryString.length).split(new RegExp("=|&"));
+const filters = {
+  search: "",
+  food: false,
+  value: false,
+  service: false,
+  language: false
+}
+filters.search = queryValues[1];
+for(let i = 2; i < queryValues.length; i += 2) {
+  if(queryValues[i+1] == "on") {
+    filters[queryValues[i]] = true;
+  }
+}
+
+// Auto-fill form from parsed url values
 
 const searchQuery = document.getElementById("searchBar");
 const valueChecked = document.getElementById("valueSwitch");
@@ -106,16 +123,16 @@ const foodChecked = document.getElementById("foodSwitch");
 const serviceChecked = document.getElementById("serviceSwitch");
 const languageChecked = document.getElementById("languageSwitch");
 
-searchQuery.value = localStorage.searchQuery ? localStorage.searchQuery : "";
-valueChecked.checked = localStorage.valueChecked === "true" ? true : false;
-foodChecked.checked = localStorage.foodChecked === "true" ? true : false;
-serviceChecked.checked = localStorage.serviceChecked === "true" ? true : false;
-languageChecked.checked = localStorage.languageChecked === "true" ? true : false;
+searchQuery.value = filters.search;
+valueChecked.checked = filters.value; 
+foodChecked.checked = filters.food;
+serviceChecked.checked = filters.service;
+languageChecked.checked = filters.language;
 
 // Filters
 
 const containsQueryFilter = (currRest) => {
-  return currRest.name.toLowerCase().includes(localStorage.searchQuery.toLowerCase());
+  return currRest.name.toLowerCase().includes(filters.search.toLowerCase());
 }
 
 const valueFilter = (currRest) => {
@@ -138,10 +155,10 @@ const languageFilter = (currRest) => {
 
 let queryFilter = dummyData.restaurants.filter(containsQueryFilter);
 
-queryFilter = localStorage.valueChecked === "true" ? queryFilter.filter(valueFilter) : queryFilter;
-queryFilter = localStorage.foodChecked === "true" ? queryFilter.filter(foodFilter) : queryFilter;
-queryFilter = localStorage.serviceChecked === "true" ? queryFilter.filter(serviceFilter) : queryFilter;
-queryFilter = localStorage.languageChecked === "true" ? queryFilter.filter(languageFilter) : queryFilter;
+queryFilter = filters.search !== "" ? queryFilter.filter(valueFilter) : queryFilter;
+queryFilter = filters.food ? queryFilter.filter(foodFilter) : queryFilter;
+queryFilter = filters.service ? queryFilter.filter(serviceFilter) : queryFilter;
+queryFilter = filters.language ? queryFilter.filter(languageFilter) : queryFilter;
 
 // Create and append DOM elements
 
@@ -154,17 +171,11 @@ else {
   const cardPlacehoder = document.getElementById("resultsPlaceholder");
   
   queryFilter.forEach((element, index) => {
-    // const restaurant = document.createElement("h2");
-    // restaurant.innerText = element.name;
-    // document.getElementById("resultsPlaceholder").appendChild(restaurant);
-
     const card = document.createElement("div");
     card.id = "card" + index;
     cardPlacehoder.appendChild(card);
 
     $(`#${card.id}`).load("./card.html", function() {
-      console.log("callback" + index + " function loaded");
-      // console.log("restname?", document.getElementById("restName"));
       document.getElementById("restName").innerHTML = element.name;
       document.getElementById("restName").id = "restName" + index;
 
