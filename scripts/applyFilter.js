@@ -100,7 +100,7 @@ let dummyData = {
 
 // Parse query from url
 const queryString = window.location.search;
-const queryValues = queryString.slice(1,queryString.length).split(new RegExp("=|&"));
+const queryValues = queryString.slice(1, queryString.length).split(new RegExp("=|&"));
 const filters = {
   search: "",
   food: false,
@@ -109,8 +109,8 @@ const filters = {
   language: false
 }
 filters.search = queryValues[1];
-for(let i = 2; i < queryValues.length; i += 2) {
-  if(queryValues[i+1] == "on") {
+for (let i = 2; i < queryValues.length; i += 2) {
+  if (queryValues[i + 1] == "on") {
     filters[queryValues[i]] = true;
   }
 }
@@ -124,7 +124,7 @@ const serviceChecked = document.getElementById("serviceSwitch");
 const languageChecked = document.getElementById("languageSwitch");
 
 searchQuery.value = filters.search;
-valueChecked.checked = filters.value; 
+valueChecked.checked = filters.value;
 foodChecked.checked = filters.food;
 serviceChecked.checked = filters.service;
 languageChecked.checked = filters.language;
@@ -168,14 +168,14 @@ if (queryFilter.length == 0) {
   document.getElementById("resultsPlaceholder").appendChild(nothingFound);
 }
 else {
-  const cardPlacehoder = document.getElementById("resultsPlaceholder");
-  
+  const cardPlaceholder = document.getElementById("resultsPlaceholder");
+
   queryFilter.forEach((element, index) => {
     const card = document.createElement("div");
     card.id = "card" + index;
-    cardPlacehoder.appendChild(card);
-
-    $(`#${card.id}`).load("./card.html", function() {
+    cardPlaceholder.appendChild(card);
+    
+    $(`#${card.id}`).load("./card.html", function () {
       document.getElementById("restName").innerHTML = element.name;
       document.getElementById("restName").id = "restName" + index;
 
