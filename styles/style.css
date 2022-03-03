@@ -1,9 +1,19 @@
-/* footer {
-  position: fixed;
-  height: 50px;
-  background-color: grey;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  margin-bottom: 0px;
-} */
+#rest-img-placeholder {
+  width: 100%;
+}
+.rest-img-placeholder {
+  width: 100%;
+}
+
+#restaurant-page-container h2 {
+  font-size: 1.25em;
+}
+
+/* Make the icon display side-by-side with the restaurant page label */
+.rest-content-label {
+  display: flex;
+}
+
+#resultsPlaceholder a {
+  text-decoration: none;
+}
