@@ -91,6 +91,9 @@ db.collection("restaurants").get()
         cardPlaceholder.appendChild(card);
 
         $(`#${card.id}`).load("./card.html", function () {
+          card.querySelector("a").setAttribute("href", "./restaurant.html?" + element.name);
+          console.log(card.querySelector("a"));
+
           document.getElementById("restName").innerHTML = element.name;
           document.getElementById("restName").id = "restName" + index;
 
