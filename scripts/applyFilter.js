@@ -84,6 +84,10 @@ db.collection("testRestaurants").get()
     else {
       const cardPlaceholder = document.getElementById("resultsPlaceholder");
 
+      const numResults = document.createElement("p");
+      numResults.innerHTML = queryFilter.length > 1 ? `Search returned ${queryFilter.length} results.` : `Search returned ${queryFilter.length} result.`;
+      cardPlaceholder.appendChild(numResults);
+
       queryFilter.forEach((element, index) => {
         const card = document.createElement("div");
         card.id = "card" + index;
