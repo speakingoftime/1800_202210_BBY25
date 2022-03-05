@@ -7,18 +7,18 @@ let restPageName = queryValueFmt;
 
 let restPageRatings = [];
 
-db.collection("restaurants").get()
+db.collection("testRestaurants").get()
   .then(snap => {
     snap.forEach(doc => {
-        // Load the restaurant's name + ratings
-        if (restPageName === doc.data().name) {
-          restPageRatings.push({
-            "food": doc.data().food,
-            "service": doc.data().service,
-            "value": doc.data().value,
-            "language": doc.data().language
-          });
-        }
+      // Load the restaurant's name + ratings
+      if (restPageName === doc.data().name) {
+        restPageRatings.push({
+          "food": doc.data().food,
+          "service": doc.data().service,
+          "value": doc.data().value,
+          "language": doc.data().language
+        });
+      }
     })
   }).then(() => {
     // Changes restaurant name
@@ -31,25 +31,25 @@ db.collection("restaurants").get()
 
     restPageRatings.forEach(doc => {
       // food rating
-      const i = parseInt((doc.food[0] / (doc.food[0] + doc.food[1]) * 100));
+      const i = parseInt((doc.food.up.length / (doc.food.up.length + doc.food.down.length) * 100));
       let foodRatingDiv = document.createElement("div");
       restRatingsDiv.appendChild(foodRatingDiv);
       foodRatingDiv.innerHTML = "Food Quality: " + i + "% &#128077;";
 
       // value rating
-      const j = parseInt((doc.value[0] / (doc.value[0] + doc.value[1]) * 100));
+      const j = parseInt((doc.value.up.length / (doc.value.up.length + doc.value.down.length) * 100));
       let valRatingDiv = document.createElement("div");
       restRatingsDiv.appendChild(valRatingDiv);
       valRatingDiv.innerHTML = "Value: " + j + "% &#128077;";
 
       // service rating
-      const k = parseInt((doc.service[0] / (doc.service[0] + doc.service[1]) * 100));
+      const k = parseInt((doc.service.up.length / (doc.service.up.length + doc.service.down.length) * 100));
       let servRatingDiv = document.createElement("div");
       restRatingsDiv.appendChild(servRatingDiv);
       servRatingDiv.innerHTML = "Service: " + k + "% &#128077;";
 
       // language rating
-      const l = parseInt((doc.language[0] / (doc.language[0] + doc.language[1]) * 100));
+      const l = parseInt((doc.language.up.length / (doc.language.up.length + doc.language.down.length) * 100));
       let langRatingDiv = document.createElement("div");
       restRatingsDiv.appendChild(langRatingDiv);
       langRatingDiv.innerHTML = "Language Independency: " + l + "% &#128077;";

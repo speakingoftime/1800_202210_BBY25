@@ -1,6 +1,6 @@
 // Get restaurant data from database
 const data = [];
-db.collection("restaurants").get()
+db.collection("testRestaurants").get()
   .then(snap => {
     snap.forEach(doc => {
       data.push({
@@ -12,7 +12,6 @@ db.collection("restaurants").get()
       });
     })
   }).then(() => {
-
     // Parse query from url
     const queryString = window.location.search;
     const queryValues = queryString.slice(1, queryString.length).split(new RegExp("=|&"));
@@ -51,26 +50,26 @@ db.collection("restaurants").get()
     }
 
     const valueFilter = (currRest) => {
-      return currRest.value[0] + currRest.value[1] * -1 > 0;
+      return currRest.value.up.length + currRest.value.down.length * -1 > 0;
     }
 
     const foodFilter = (currRest) => {
-      return currRest.food[0] + currRest.food[1] * -1 > 0;
+      return currRest.food.up.length + currRest.food.down.length * -1 > 0;
     }
 
     const serviceFilter = (currRest) => {
-      return currRest.service[0] + currRest.service[1] * -1 > 0;
+      return currRest.service.up.length + currRest.service.down.length * -1 > 0;
     }
 
     const languageFilter = (currRest) => {
-      return currRest.language[0] + currRest.language[1] * -1 > 0;
+      return currRest.language.up.length + currRest.language.down.length * -1 > 0;
     }
 
     // Apply Filters
 
     let queryFilter = data.filter(containsQueryFilter);
 
-    queryFilter = filters.search !== "" ? queryFilter.filter(valueFilter) : queryFilter;
+    queryFilter = filters.value ? queryFilter.filter(valueFilter) : queryFilter;
     queryFilter = filters.food ? queryFilter.filter(foodFilter) : queryFilter;
     queryFilter = filters.service ? queryFilter.filter(serviceFilter) : queryFilter;
     queryFilter = filters.language ? queryFilter.filter(languageFilter) : queryFilter;
@@ -92,24 +91,23 @@ db.collection("restaurants").get()
 
         $(`#${card.id}`).load("./card.html", function () {
           card.querySelector("a").setAttribute("href", "./restaurant.html?" + element.name);
-          console.log(card.querySelector("a"));
 
           document.getElementById("restName").innerHTML = element.name;
           document.getElementById("restName").id = "restName" + index;
 
-          const i = parseInt((element.food[0] / (element.food[0] + element.food[1]) * 100));
+          const i = parseInt((element.food.up.length / (element.food.up.length + element.food.down.length) * 100));
           document.getElementById("restFood").innerHTML = "Food Quality: " + i + "% &#128077;";
           document.getElementById("restFood").id = "restFood" + index;
 
-          const j = parseInt((element.value[0] / (element.value[0] + element.value[1]) * 100));
+          const j = parseInt((element.value.up.length / (element.value.up.length + element.value.down.length) * 100));
           document.getElementById("restValue").innerHTML = "Value: " + j + "% &#128077;";
           document.getElementById("restValue").id = "restValue" + index;
 
-          const k = parseInt((element.service[0] / (element.service[0] + element.service[1]) * 100));
+          const k = parseInt((element.service.up.length / (element.service.up.length + element.service.down.length) * 100));
           document.getElementById("restService").innerHTML = "Service: " + k + "% &#128077;";
           document.getElementById("restService").id = "restService" + index;
 
-          const l = parseInt((element.language[0] / (element.language[0] + element.language[1]) * 100));
+          const l = parseInt((element.language.up.length / (element.language.up.length + element.language.down.length) * 100));
           document.getElementById("restLanguage").innerHTML = "Language Independency: " + l + "% &#128077;";
           document.getElementById("restLanguage").id = "restLanguage" + index;
 
