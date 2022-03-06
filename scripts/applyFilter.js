@@ -115,8 +115,49 @@ db.collection("testRestaurants").get()
           document.getElementById("restLanguage").innerHTML = "Language Independency: " + l + "% &#128077;";
           document.getElementById("restLanguage").id = "restLanguage" + index;
 
+          const recRevs = recentReviews(element);
+          document.getElementById("restRecentReviews").innerHTML = "Recent Reviews: " + recRevs;
+          document.getElementById("restRecentReviews").id = "restRecentReviews" + index;
         });
 
       })
     }
   })
+const recentReviews = rest => {
+  const oneMonth = 155520000;
+  const now = Date.now();
+  let recentUp = 0;
+  let recentDown = 0;
+  for (prop in rest) {
+    if (prop !== "name") {
+      rest[prop].up.forEach(element => {
+        if (now - element < oneMonth) {
+          recentUp++;
+        }
+      })
+      rest[prop].down.forEach(element => {
+        if (now - element < oneMonth) {
+          recentDown++;
+        }
+      })
+    }
+  }
+  const ratio = parseInt((recentUp / (recentUp + recentDown)) * 100);
+  let ret = "";
+  if (ratio >= 80) {
+    ret = "Overwhelmingly Positive";
+  }
+  else if (ratio >= 70) {
+    ret = "Mostly Positive";
+  }
+  else if (ratio >= 50) {
+    ret = "Mixed";
+  }
+  else if (ratio >= 30) {
+    ret = "Mostly Negative";
+  }
+  else {
+    ret = "Overwhelmingly Negative";
+  }
+  return ret;
+}
