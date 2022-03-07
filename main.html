@@ -30,7 +30,7 @@
   <!-- NAVBAR -->
   <div class="pos-f-t">
     <nav class="navbar navbar-dark bg-dark">
-      <a href="./index.html" class="mx-3"><span class="navbar-brand">BRAND</span></a>
+      <a href="./index.html" class="nav-link"><span class="navbar-brand">BRAND</span></a>
       <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -39,8 +39,17 @@
     </nav>
     <div class="collapse" id="navbarToggleExternalContent">
       <div class="bg-dark p-3">
-        <h5 class="text-white h4">Collapsed content</h5>
-        <span class="text-muted">Toggleable via the navbar brand.</span>
+        <ul id="navbar-list">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./search.html">Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./login.html">Login</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -55,6 +64,28 @@
       </div>
     </div>
   </div>
+
+  <!-- <template id="savedRestCardTemplate"> -->
+    <div class="card w-100 mt-2 text-center" id="savedCard" style="width: 18rem;">
+      <a href="./restaurant.html">
+        <img src="https://dummyimage.com/285x180/757575/000000" class="card-img-top" alt="restaurant logo">
+        <div class="card-body">
+          <h5 class="card-title" id="restName">Restaurant Name</h5>
+          <p class="card-text" id="restDescription">Restaurant description.</p>
+        </div>
+      </a>
+      <div class="saveButton d-flex justify-content-center align-items-center pt-2">
+          <a href="#" class="saveIcon">
+            <i class="material-icons text-white">favorite</i>
+          </a>
+      </div>
+      <div class="card-body">
+        <a href="#" class="card-link" id="restWebsite">Website Link</a>
+        <a href="#" class="card-link" id="restMenu">Menu link</a>
+      </div>
+    </div>
+    <br/>
+  <!-- </template> -->
 
   <!-- Footer -->
   <div class="fixed-bottom footer-copyright text-center text-black-50 py-3">©2022 Copyright:
@@ -72,6 +103,7 @@
 
   <!-- Our JS -->
   <script src="./scripts/firebaseInit.js"></script>
+  <script src="./scripts/savedList.js"></script>
 </body>
 
 </html>
