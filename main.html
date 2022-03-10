@@ -29,8 +29,10 @@
 <body>
   <!-- NAVBAR -->
   <div class="pos-f-t">
-    <nav class="navbar navbar-dark bg-dark">
-      <a href="./index.html" class="nav-link"><span class="navbar-brand">BRAND</span></a>
+    <nav class="navbar navbar-light bg-light">
+      <a href="./index.html" class="mx-3 my-2">
+        <img id="logo" src="./images/logo.svg" alt="Food Finder Vancouver"/>
+      </a>
       <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -38,18 +40,11 @@
       </button>
     </nav>
     <div class="collapse" id="navbarToggleExternalContent">
-      <div class="bg-dark p-3">
-        <ul id="navbar-list">
-          <li class="nav-item">
-            <a class="nav-link" href="./index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./search.html">Search</a>
-          </li>
-          <li class="nav-item">
-            <a id="login-btn" class="nav-link" href="./login.html">Login</a>
-          </li>
-        </ul>
+      <div class="nav navbar-dark d-grid text-center p-3" style="background: #8bba40;" id="navbar-list">
+        <a class="nav-link text-white" href="./index.html">Home</a>
+        <a class="nav-link text-white" href="./search.html">Search</a>
+        <a class="nav-link text-white" href="./main.html">Saved list</a>
+        <a id="login-btn" class="nav-link text-white" href="./login.html">Login</a>
       </div>
     </div>
   </div>
