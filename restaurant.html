@@ -43,7 +43,7 @@
             <a class="nav-link" href="./search.html">Search</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./login.html">Login</a>
+            <a class="nav-link" href="./login.html" id="login-btn">Login</a>
           </li>
         </ul>
       </div>
@@ -55,7 +55,17 @@
     <div id="restaurant-content-placeholder">
 
       <!-- Restaurant name-->
-      <h1 id="rest-name-placeholder" class="py-2">Restaurant Name</h1>
+      <div id="rest-name-wrapper" class="d-flex justify-content-between align-items-center">
+        <h1 id="rest-name-placeholder" class="py-2">Restaurant Name</h1>
+        <!-- Save restaurant icon -->
+        <input type="checkbox" class="btn-check" id="btn-check-outlined" checked="" autocomplete="off"/>
+        <label class="btn btn-outline-danger" for="btn-check-outlined"><span class="saveIcon material-icons pt-2">favorite</span></label>
+        <!-- Remove restaurant icon -->
+        <!-- <button class="saveButton btn btn-danger" id="restRemoveFromList" type="button"
+          style="display: none;">
+          <i class="saveIcon material-icons pt-2">favorite</i>
+        </button> -->
+      </div>
 
       <!-- Starts with an image gallery here. There's some CSS being used on the images -->
       <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
@@ -154,6 +164,8 @@
   <!-- Our JS -->
   <script src="./scripts/firebaseInit.js"></script>
   <script src="./scripts/changeRestaurantInfo.js"></script>
+  <script src="./scripts/savedList.js"></script>
+  <script src="./scripts/updateNav.js"></script>
 
 </body>
 
