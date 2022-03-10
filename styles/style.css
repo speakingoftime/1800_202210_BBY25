@@ -22,3 +22,11 @@ html, body {
 #resultsPlaceholder a {
   text-decoration: none;
 }
+
+#rest-name-wrapper {
+  height: 10vh;
+}
+
+#logo {
+  height: 5vh;
+}
