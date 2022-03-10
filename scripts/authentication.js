@@ -13,17 +13,23 @@ var uiConfig = {
             if (authResult.additionalUserInfo.isNewUser) {
                 //Create a collection with name "users"
                 db.collection("users")
-                //Define a document for a user with userID (UID) as a document ID
-                .doc(user.uid).set({
-                    name: user.displayName,
-                    email: user.email
-                }).then(function(){
-                    console.log("New user added to Firestore");
-                    window.localStorage.assign("main.html");
+                    //Define a document for a user with userID (UID) as a document ID
+                    .doc(user.uid).set({
+                        name: user.displayName,
+                        email: user.email
+                    }).then(function () {
+                        console.log("New user added to Firestore");
+                        window.localStorage.assign("main.html");
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                // Create a doc under savedRestaurants with empty "restaurants" field
+                db.collection("savedRestaurants").doc(user.uid).set({
+                    restaurants: []
+                }).then(function() {
+                    console.log("Saved list created for user");
                 })
-                .catch(function(error){
-                    console.log(error);
-                });
             } else {
                 return true;
             }
@@ -37,7 +43,7 @@ var uiConfig = {
     },
     // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
     signInFlow: 'popup',
-    signInSuccessUrl: 'main.html',
+    signInSuccessUrl: './main.html',
     signInOptions: [
         // Leave the lines as is for the providers you want to offer your users.
         // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
