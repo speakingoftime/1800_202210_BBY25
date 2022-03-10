@@ -47,7 +47,7 @@
             <a class="nav-link" href="./search.html">Search</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./login.html">Login</a>
+            <a id="login-btn" class="nav-link" href="./login.html">Login</a>
           </li>
         </ul>
       </div>
@@ -60,32 +60,24 @@
     <div class="container">
       <h2>Your saved restaurants</h2>
       <!-- Saved restaurants container -->
-      <div id="saved-list">
+      <div id="saved-list-placeholder">
       </div>
     </div>
   </div>
 
-  <!-- <template id="savedRestCardTemplate"> -->
-    <div class="card w-100 mt-2 text-center" id="savedCard" style="width: 18rem;">
+  <template id="savedCardTemplate">
+    <div class="card w-100 mt-2 text-center" style="width: 18rem;">
       <a href="./restaurant.html">
         <img src="https://dummyimage.com/285x180/757575/000000" class="card-img-top" alt="restaurant logo">
-        <div class="card-body">
-          <h5 class="card-title" id="restName">Restaurant Name</h5>
-          <p class="card-text" id="restDescription">Restaurant description.</p>
-        </div>
       </a>
-      <div class="saveButton d-flex justify-content-center align-items-center pt-2">
-          <a href="#" class="saveIcon">
-            <i class="material-icons text-white">favorite</i>
-          </a>
-      </div>
       <div class="card-body">
-        <a href="#" class="card-link" id="restWebsite">Website Link</a>
-        <a href="#" class="card-link" id="restMenu">Menu link</a>
+        <h5 class="card-title">Restaurant Name</h5>
       </div>
+      <!-- Save restaurant icon -->
+      <input type="checkbox" class="btn-check" id="btn-check-outlined" checked="" autocomplete="off"/>
+      <label class="btn btn-outline-danger" for="btn-check-outlined"><span class="saveIcon material-icons pt-2">favorite</span></label>
     </div>
-    <br/>
-  <!-- </template> -->
+  </template>
 
   <!-- Footer -->
   <div class="fixed-bottom footer-copyright text-center text-black-50 py-3">©2022 Copyright:
@@ -103,7 +95,9 @@
 
   <!-- Our JS -->
   <script src="./scripts/firebaseInit.js"></script>
-  <script src="./scripts/savedList.js"></script>
+  <script src="./scripts/main.js"></script>
+  <!-- <script src="./scripts/savedList.js"></script> -->
+  <script src="./scripts/updateNav.js"></script>
 </body>
 
 </html>
