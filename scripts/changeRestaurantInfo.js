@@ -4,6 +4,7 @@ const queryValue = queryString.slice(1, queryString.length);
 // Format the restaurant name taken from the URL
 let queryValueFmt = queryValue.replaceAll("%27", "'").replaceAll("%20", " ");
 let restPageName = queryValueFmt;
+localStorage.setItem("restaurant name", restPageName);
 
 let restPageRatings = [];
 
