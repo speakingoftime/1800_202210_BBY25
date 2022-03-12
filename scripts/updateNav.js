@@ -3,7 +3,6 @@ let loginBtn = document.getElementById("login-btn");
 
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
-        loginBtn.setAttribute("href", "./index.html");
         loginBtn.innerHTML = "Log out";
         loginBtn.addEventListener("click", function () {
             firebase.auth().signOut().then(() => {
