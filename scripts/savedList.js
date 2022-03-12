@@ -19,7 +19,7 @@ function toggleSaveBtn() {
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     var uid = user.uid;
-    let savedList = db.collection("savedRestaurants").doc(user.uid);
+    let savedList = db.collection("users").doc(user.uid);
 
     savedList.get().then((doc) => {
       if (doc.exists) {

@@ -16,7 +16,8 @@ var uiConfig = {
                     //Define a document for a user with userID (UID) as a document ID
                     .doc(user.uid).set({
                         name: user.displayName,
-                        email: user.email
+                        email: user.email,
+                        restaurants: []
                     }).then(function () {
                         console.log("New user added to Firestore");
                         window.localStorage.assign("main.html");
@@ -24,12 +25,6 @@ var uiConfig = {
                     .catch(function (error) {
                         console.log(error);
                     });
-                // Create a doc under savedRestaurants with empty "restaurants" field
-                db.collection("savedRestaurants").doc(user.uid).set({
-                    restaurants: []
-                }).then(function() {
-                    console.log("Saved list created for user");
-                })
             } else {
                 return true;
             }

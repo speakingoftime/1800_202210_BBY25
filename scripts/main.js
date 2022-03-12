@@ -1,23 +1,18 @@
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    let savedList = db.collection("savedRestaurants").doc(user.uid);
-    let userList = db.collection("users").doc(user.uid);
-
-    // Add name to welcome page
-    userList.get().then((doc) => {
-      let userName = doc.data().name;
-      document.getElementById("user-name-here").innerText = userName;
-    });
-
-    // Create and add cards for each restaurant in saved list
+    let savedList = db.collection("users").doc(user.uid);
+    // Create and add cards for each saved restaurant
     savedList.get().then((doc) => {
       if (doc.exists) {
+        // Add name to welcome page
+        let userName = doc.data().name;
+        document.getElementById("user-name-here").innerText = userName;
+
+        // Display the cards
         let currentData = doc.data().restaurants;
         let savedCardTemplate = document.getElementById("savedCardTemplate");
         let savedListCard = document.getElementById("saved-list-placeholder");
-        
-        // Display the cards
         if (currentData.length !== 0) {
           currentData.forEach(element => {
             const savedCard = savedCardTemplate.content.cloneNode(true);
@@ -64,7 +59,6 @@ firebase.auth().onAuthStateChanged((user) => {
           savedListCard.appendChild(emptyList);
           console.log(message);
         }
-        
       } else {
         // doc.data() will be undefined
         console.log("No such document!");
