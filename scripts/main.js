@@ -28,29 +28,32 @@ firebase.auth().onAuthStateChanged((user) => {
 
             // Determine save button functions
             saveBtn.addEventListener("click", function() {
+              localStorage.setItem("restaurant name", name);
+              let restName = localStorage.getItem("restaurant name");
+              // Filter restaurant name (in card) from the user's saved restaurants database
+              let filterData = currentData.filter(function(result) {
+                return result != restName; // Returns a new array
+              });
               if (count == 1) {
                 console.log("Removed");
-                count--;
-                // Filter restaurant name (in card) from the user's saved restaurants database
-                let tempData = currentData.filter(function(result) {
-                  return result != name; // Returns a new array
-                })
+                saveBtn.classList.remove("active");
+                saveBtn.querySelector(".saveIcon").innerText = "favorite_border";
                 // Rewrite list
                 savedList.update({
-                  restaurants: tempData
+                  restaurants: filterData
                 });
+                count--;
               }
               else if (count == 0) {
                 console.log("Saved");
-                count++;
-                // Get restaurant name from card
-                let tempData = [name];
-                // Concatenate restaurant name to top of current list
-                let newData = tempData.concat(currentData);
+                saveBtn.classList.add("active");
+                saveBtn.querySelector(".saveIcon").innerText = "favorite";
+                let newData = [restName].concat(filterData);
                 // Rewrite list
                 savedList.update({
                   restaurants: newData
                 });
+                count++;
               }
             })
             savedListCard.appendChild(savedCard);
@@ -71,8 +74,10 @@ firebase.auth().onAuthStateChanged((user) => {
     });
   } else {
     // User is signed out
-    // Redirect user to login page
-    location.href = "./login.html";
-  }
+    console.log("Not logged in");
+    // Load modal prompting user to log in
+    let loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+    loginModal.show(loginModal);
+  };
 });
 
