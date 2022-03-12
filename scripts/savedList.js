@@ -64,7 +64,7 @@ firebase.auth().onAuthStateChanged((user) => {
     });
   } else {
     // User is signed out
-    // Redirect user to login page
-    location.href = "./login.html";
+    console.log("Not logged in");
+    saveBtn.removeAttribute("checked");
   }
 });
