@@ -13,7 +13,7 @@ db.collection("restaurants").get()
     })
   }).then(() => {
     // Parse query from url
-    const queryString = window.location.search;
+    const queryString = window.location.search === "" ? "?search=" : window.location.search;
     const queryValues = queryString.slice(1, queryString.length).split(new RegExp("=|&"));
     const filters = {
       search: "",
