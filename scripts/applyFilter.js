@@ -1,6 +1,6 @@
 // Get restaurant data from database
 const data = [];
-db.collection("testRestaurants").get()
+db.collection("restaurants").get()
   .then(snap => {
     snap.forEach(doc => {
       data.push({
