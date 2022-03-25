@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8"/>
-  <title>My BCIT Project</title>
+  <title>Search | FoodFinderVancouver</title>
   <meta name="comp1800 boilerplate code" content="my bcit project"/>
   <meta name="author" content="BCIT"/>
 
@@ -33,15 +33,15 @@
     </nav>
     <div class="collapse" id="navbarToggleExternalContent">
       <div class="nav navbar-dark d-grid text-center p-3" style="background: #8bba40;" id="navbar-list">
-        <a class="nav-link text-white" href="./index.html">Home</a>
-        <a class="nav-link text-white" href="./search.html">Search</a>
-        <a class="nav-link text-white" href="./main.html">Saved list</a>
-        <a id="login-btn" class="nav-link text-white" href="./login.html">Login</a>
+        <a class="nav-link text-white" href="./index.html" id="home-btn">Home</a>
+        <a class="nav-link text-white" href="./search.html" id="search-btn">Search</a>
+        <a class="nav-link text-white" href="./main.html" id="saved-btn">Saved list</a>
+        <a class="nav-link text-white" href="./login.html" id="login-btn">Log in</a>
       </div>
     </div>
   </div>
 
-  <!-- Hero banner -->
+  <!-- Search -->
   <div class="px-4 py-5 my-5">
     <div class="col-lg-6 mx-auto">
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
@@ -51,32 +51,33 @@
               <input id="searchBar" class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
             </div>
             <div class="col-2">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <button class="btn btn-outline-success text-nowrap" type="submit" id="searchBtn">Search</button>
             </div>
           </div>
           <div class="row py-2">
+            <p id="filterDesc">Filter restaurants by:</p>
             <div class="col">
               <div class="form-check form-switch">
                 <input class="form-check-input" name="food" type="checkbox" role="switch" id="foodSwitch">
-                <label class="form-check-label" for="foodSwitch">Food Quality</label>
+                <label class="form-check-label text-nowrap" for="foodSwitch" id="foodLabel">Food Quality</label>
               </div>
             </div>
             <div class="col">
               <div class="form-check form-switch">
                 <input class="form-check-input" name="value" type="checkbox" role="switch" id="valueSwitch">
-                <label class="form-check-label" for="valueSwitch">Value</label>
+                <label class="form-check-label text-nowrap" for="valueSwitch" id="valueLabel">Value</label>
               </div>
             </div>
             <div class="col">
               <div class="form-check form-switch">
                 <input class="form-check-input" name="service" type="checkbox" role="switch" id="serviceSwitch">
-                <label class="form-check-label" for="serviceSwitch">Service</label>
+                <label class="form-check-label text-nowrap" for="serviceSwitch" id="serviceLabel">Service</label>
               </div>
             </div>
             <div class="col">
               <div class="form-check form-switch">
                 <input class="form-check-input" name="language" type="checkbox" role="switch" id="languageSwitch">
-                <label class="form-check-label" for="languageSwitch">Language Independancy</label>
+                <label class="form-check-label text-nowrap" for="languageSwitch" id="languageLabel">Little English Needed</label>
               </div>
             </div>
           </div>
@@ -87,8 +88,7 @@
   </div>
 
   <!-- Footer -->
-  <div class="footer-copyright text-center text-black-50 py-3">©2022 Copyright:
-    <a class="dark-grey-text" href="_blank2">website.com</a>
+  <div class="footer-copyright text-center text-black-50 py-3">©2022 FoodFinderVancouver.
   </div>
 
   <!-- Bootstrap Library CSS CDN go here -->
