@@ -17,6 +17,7 @@ var uiConfig = {
                     .doc(user.uid).set({
                         name: user.displayName,
                         email: user.email,
+                        language: "Eng",
                         restaurants: []
                     }).then(function () {
                         console.log("New user added to Firestore");
