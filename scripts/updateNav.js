@@ -14,7 +14,5 @@ firebase.auth().onAuthStateChanged(user => {
         });
     } else {
         // Keep login button as is
-        loginBtn.setAttribute("href", "./login.html");
-        loginBtn.innerHTML = "Log in";
     }
 });
