@@ -20,13 +20,11 @@
   <!-- NAVBAR -->
   <div class="pos-f-t">
     <nav class="navbar navbar-light bg-light">
-      <a href="./search.html">
         <svg id="backButton" class="mx-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-          width="24px" fill="#29BDE4">
+          width="24px" fill="#29BDE4" onclick="window.history.back()" style="cursor: pointer;">
           <path d="M0 0h24v24H0z" fill="none" />
           <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
         </svg>
-      </a>
       <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -131,6 +129,11 @@
           <h2>Website</h2>
         </div>
         <p id="rest-website-placeholder"><a target="_blank" href="website.com">www.website.com</a></p>
+        <div class="rest-content-label">
+          <img class="me-2" src="https://dummyimage.com/32/000/fff" alt="..." />
+          <h2>Phone</h2>
+        </div>
+        <p id="rest-phone-placeholder">+11234567890</p>
       </div>
 
       <!-- This should be where the ratings go -->
