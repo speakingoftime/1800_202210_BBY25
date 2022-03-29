@@ -2,7 +2,7 @@
 const queryString = window.location.search;
 const queryValue = queryString.slice(1, queryString.length);
 // Format the restaurant name taken from the URL
-let queryValueFmt = queryValue.replaceAll("%27", "'").replaceAll("%20", " ");
+let queryValueFmt = queryValue.replaceAll("%27", "'").replaceAll("%20", " ").replaceAll("%C3%A9", "é");
 let restPageName = queryValueFmt;
 localStorage.setItem("restaurant name", restPageName);
 
