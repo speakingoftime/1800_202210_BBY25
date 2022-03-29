@@ -50,12 +50,38 @@
   </div>
 
   <!-- Main page -->
-  <div class="container-fluid p-4">
+  <div class="container-fluid p-4 text-center">
     <h1><span id="welcomeMsg">Welcome</span>, <span id="user-name-here"></span></h1>
     <div class="container">
-      <h2 id="listHeading">Your saved restaurants</h2>
-      <!-- Saved restaurants container -->
-      <div id="saved-list-placeholder">
+      <!-- Tabs to toggle between Saved List and Language -->
+      <ul class="nav nav-justified nav-pills mb-3 bg-light" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="pills-saves-tab" data-bs-toggle="pill" data-bs-target="#pills-saves" type="button" role="tab" aria-controls="pills-saves" aria-selected="true">Your Saved List</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-language-tab" data-bs-toggle="pill" data-bs-target="#pills-language" type="button" role="tab" aria-controls="pills-language" aria-selected="false">Your Language</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-saves" role="tabpanel" aria-labelledby="pills-saves-tab">
+          <!-- <h2 id="listHeading">Your saved restaurants</h2> -->
+          <!-- Saved restaurants container -->
+          <div id="saved-list-placeholder">
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pills-language" role="tabpanel" aria-labelledby="pills-language-tab">
+          <div id="langOptions" class="d-md-flex justify-content-md-end">
+            <h3 id="langOptionsHeading">Change language:</h3>
+            <div id="changeLangBtns" class="d-grid gap-2">
+              <button class="btn btn-outline-primary" type="button" id="langEng">
+                English
+              </button>
+              <button class="btn btn-outline-primary" type="button" id="langCn">
+                中文
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -69,11 +95,11 @@
           <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
         <div class="modal-body border-top-0">
-          <p id="loginModalMsg">Please login</p>
+          <p id="loginModalMsg">Please log in</p>
         </div>
         <div class="modal-footer border-top-0">
-          <a href="#" role="button" class="btn btn-outline-secondary" onclick="history.back()" id="modalClose">Go back</a>
-          <a href="./login.html" role="button" class="btn btn-primary" id="loginModalBtn">Login</a>
+          <a href="#" role="button" class="btn btn-outline-secondary" onclick="history.back()" id="modalClose">No, thanks</a>
+          <a href="./login.html" role="button" class="btn btn-primary" id="loginModalBtn">Log in</a>
         </div>
       </div>
     </div>
