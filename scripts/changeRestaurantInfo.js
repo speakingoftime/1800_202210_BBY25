@@ -72,6 +72,12 @@ db.collection("restaurants").get()
     // Phone
     document.getElementById("rest-phone-placeholder").innerHTML = restPageRatings.phoneNumber;
 
+  }).then(() => {
+    // Loads translate.js after the results
+    let body = document.querySelector("body");
+    let translateScript = document.createElement("script");
+    translateScript.setAttribute("src", "./scripts/translate.js");
+    body.appendChild(translateScript);
   })
 
 const recentReviews = rest => {
@@ -120,7 +126,7 @@ $("#reviewForm").submit(function(e) {
 });
 
 // Restaurant Document ID
-db.collection("testRestaurants").where("name", "==", restPageName).get().then((querySnapshot) => {
+db.collection("restaurants").where("name", "==", restPageName).get().then((querySnapshot) => {
   querySnapshot.forEach((doc) => {
     var docID = doc.id;
     console.log("doc id: " + docID);
@@ -270,7 +276,7 @@ db.collection("testRestaurants").where("name", "==", restPageName).get().then((q
           // Load modal prompting user to log in
           let loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
           loginModal.toggle(loginModal);
-        })
+        });
       }
     });
   });
