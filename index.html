@@ -97,11 +97,9 @@
   </div>
 
   <!-- Language prompt -->
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Test the language prompt</button>
-
   <div class="offcanvas offcanvas-bottom" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasBottomLabel">Change language?</h5>
+      <h5 class="offcanvas-title" id="offcanvasBottomLabel">Change language</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -111,7 +109,7 @@
             Yes
           </button>
           <ul class="container dropdown-menu bg-light" style="border: 1px solid blue;">
-            <li><a class="dropdown-item text-center pt-1 pb-2" href="#" id="langEn" data-bs-dismiss="offcanvas">English</a></li>
+            <li><a class="dropdown-item text-center pt-1 pb-2" href="#" id="langEng" data-bs-dismiss="offcanvas">English</a></li>
             <li><a class="dropdown-item text-center pt-1 pb-2" href="#" id="langCn" data-bs-dismiss="offcanvas">中文</a></li>
           </ul>
         </div>
@@ -124,9 +122,14 @@
       </div>
     </div>
   </div>
+  
+  <!-- Language button -->
+  <div class="container text-center">
+    <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Language</button>
+  </div>
 
   <!-- Footer -->
-  <div class="fixed-bottom footer-copyright text-center text-black-50 py-3">©2022 FoodFinderVancouver.
+  <div class="footer-copyright text-center text-black-50 py-3">©2022 FoodFinderVancouver.
   </div>
 
   <!-- Bootstrap Library CSS CDN go here -->
