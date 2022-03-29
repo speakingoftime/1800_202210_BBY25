@@ -9,6 +9,19 @@ firebase.auth().onAuthStateChanged((user) => {
         let userName = doc.data().name;
         document.getElementById("user-name-here").innerText = userName;
 
+        // Display language
+        document.getElementById("langEng").addEventListener("click", function() {
+          localStorage.setItem("Language", "Eng");
+          savedList.update({"language": localStorage.getItem("Language")});
+          translateToEng();
+        });
+        document.getElementById("langCn").addEventListener("click", function() {
+          localStorage.setItem("Language", "Cn");
+          savedList.update({"language": localStorage.getItem("Language")});
+          translateToCn();
+        });
+        
+
         // Display the cards
         let currentData = doc.data().restaurants;
         let savedCardTemplate = document.getElementById("savedCardTemplate");
