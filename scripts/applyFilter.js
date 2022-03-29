@@ -89,37 +89,6 @@ db.collection("restaurants").get()
       cardPlaceholder.appendChild(numResults);
 
       queryFilter.forEach((element, index) => {
-        // const card = document.createElement("div");
-        // card.id = "card" + index;
-        // cardPlaceholder.appendChild(card);
-        
-          // $(`#${card.id}`).load("./card.html", function () {
-          //   card.querySelector("a").setAttribute("href", "./restaurant.html?" + element.name);
-
-            // document.getElementById("restName").innerHTML = element.name;
-            // document.getElementById("restName").id = "restName" + index;
-
-          //   const i = parseInt((element.food.up.length / (element.food.up.length + element.food.down.length) * 100));
-          //   document.getElementById("restFood").innerHTML = "Food Quality: " + i + "% &#128077;";
-          //   document.getElementById("restFood").id = "restFood" + index;
-
-          //   const j = parseInt((element.value.up.length / (element.value.up.length + element.value.down.length) * 100));
-          //   document.getElementById("restValue").innerHTML = "Value: " + j + "% &#128077;";
-          //   document.getElementById("restValue").id = "restValue" + index;
-
-          //   const k = parseInt((element.service.up.length / (element.service.up.length + element.service.down.length) * 100));
-          //   document.getElementById("restService").innerHTML = "Service: " + k + "% &#128077;";
-          //   document.getElementById("restService").id = "restService" + index;
-
-          //   const l = parseInt((element.language.up.length / (element.language.up.length + element.language.down.length) * 100));
-          //   document.getElementById("restLanguage").innerHTML = "Language Independency: " + l + "% &#128077;";
-          //   document.getElementById("restLanguage").id = "restLanguage" + index;
-
-          //   const recRevs = recentReviews(element);
-          //   document.getElementById("restRecentReviews").innerHTML = "Recent Reviews: " + recRevs;
-          //   document.getElementById("restRecentReviews").id = "restRecentReviews" + index;
-          // });
-
           let cardTemplate = document.querySelector("#cardTemplate");
           let card = cardTemplate.content.cloneNode(true);
           card.id = "card" + index;
