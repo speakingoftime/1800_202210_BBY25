@@ -113,3 +113,165 @@ const recentReviews = rest => {
   }
   return ret;
 }
+
+// Submit Review
+$("#reviewForm").submit(function(e) {
+  e.preventDefault();
+});
+
+// Restaurant Document ID
+db.collection("testRestaurants").where("name", "==", restPageName).get().then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+    var docID = doc.id;
+    console.log("doc id: " + docID);
+
+    // User UID
+    firebase.auth().onAuthStateChanged((user) => {
+      let reviewButton = document.getElementById("reviewButton");
+
+      if (user) {
+        var userUID = user.uid; 
+        console.log("user uid: " + userUID);
+        
+        // User logged in already or has just logged in.
+        reviewButton.addEventListener("click", function() {
+          var x = document.getElementById("reviewForm");
+          if (x.style.display === "none" || x.style.display === "") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        });
+
+        $("#reviewForm").submit(function() {
+
+          const foodButton = ($('input[name=food]:checked').val())
+          const valueButton = ($('input[name=value]:checked').val())
+          const serviceButton = ($('input[name=service]:checked').val())
+          const languageButton = ($('input[name=language]:checked').val())
+        
+          if (foodButton == null || 
+              valueButton == null || 
+              serviceButton == null || 
+              languageButton == null) {
+              
+          alert("Please select all buttons!"); 
+        
+          } else {
+
+          db.collection("jmTest").doc(docID).update({
+            [`food.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
+            [`food.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
+            [`value.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
+            [`value.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
+            [`service.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
+            [`service.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
+            [`language.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
+            [`language.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
+          });
+
+            if (foodButton == "up") {
+              db.collection("jmTest").doc(docID).set({
+                food: {
+                  up: {
+                    [userUID]: Date.now()
+                  }
+                }
+              }, {
+                merge: true
+              })
+            }
+            if (foodButton == "down") {
+              db.collection("jmTest").doc(docID).set({
+                food: {
+                  down: {
+                    [userUID]: Date.now()
+                  }
+                }
+              }, {
+                merge: true
+              })
+            }
+            if (valueButton == "up") {
+              db.collection("jmTest").doc(docID).set({
+                value: {
+                  up: {
+                    [userUID]: Date.now()
+                  }
+                }
+              }, {
+                merge: true
+              })
+            }
+            if (valueButton == "down") {
+              db.collection("jmTest").doc(docID).set({
+                value: {
+                  down: {
+                    [userUID]: Date.now()
+                  }
+                }
+              }, {
+                merge: true
+              })
+            }
+            if (serviceButton == "up") {
+              db.collection("jmTest").doc(docID).set({
+                service: {
+                  up: {
+                    [userUID]: Date.now()
+                  }
+                }
+              }, {
+                merge: true
+              })
+            }
+            if (serviceButton == "down") {
+              db.collection("jmTest").doc(docID).set({
+                service: {
+                  down: {
+                    [userUID]: Date.now()
+                  }
+                }
+              }, {
+                merge: true
+              })
+            }
+            if (languageButton == "up") {
+              db.collection("jmTest").doc(docID).set({
+                language: {
+                  up: {
+                    [userUID]: Date.now()
+                  }
+                }
+              }, {
+                merge: true
+              })
+            }
+            if (languageButton == "down") {
+              db.collection("jmTest").doc(docID).set({
+                language: {
+                  down: {
+                    [userUID]: Date.now()
+                  }
+                }
+              }, {
+                merge: true
+              })
+            }
+            console.log("submitted form");
+          // End of else
+          }
+        // End of function
+        });
+
+      } else {
+        // User not logged in or has just logged out.
+        reviewButton.addEventListener("click", function() {
+          // Load modal prompting user to log in
+          let loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+          loginModal.toggle(loginModal);
+        })
+      }
+    });
+  });
+});

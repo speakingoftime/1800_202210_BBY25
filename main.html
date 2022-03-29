@@ -69,11 +69,11 @@
           <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
         <div class="modal-body border-top-0">
-          <p>Please login</p>
+          <p id="loginModalMsg">Please login</p>
         </div>
         <div class="modal-footer border-top-0">
-          <a href="#" role="button" class="btn btn-outline-secondary" onclick="history.back()">Go back</a>
-          <a href="./login.html" role="button" class="btn btn-primary">Login</a>
+          <a href="#" role="button" class="btn btn-outline-secondary" onclick="history.back()" id="modalClose">Go back</a>
+          <a href="./login.html" role="button" class="btn btn-primary" id="loginModalBtn">Login</a>
         </div>
       </div>
     </div>
@@ -111,6 +111,7 @@
   <script src="./scripts/firebaseInit.js"></script>
   <script src="./scripts/main.js"></script>
   <script src="./scripts/updateNav.js"></script>
+  <script src="./scripts/translate.js"></script>
 </body>
 
 </html>

@@ -30,3 +30,7 @@ html, body {
 #logo {
   height: 5vh;
 }
+
+#reviewForm {
+  display: none;
+}
