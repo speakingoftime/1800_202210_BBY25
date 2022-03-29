@@ -85,44 +85,84 @@ db.collection("restaurants").get()
       const cardPlaceholder = document.getElementById("resultsPlaceholder");
 
       const numResults = document.createElement("p");
-      numResults.innerHTML = queryFilter.length > 1 ? `Search returned ${queryFilter.length} results.` : `Search returned ${queryFilter.length} result.`;
+      numResults.innerHTML = queryFilter.length > 1 ? `${queryFilter.length} results` : `${queryFilter.length} result`;
       cardPlaceholder.appendChild(numResults);
 
       queryFilter.forEach((element, index) => {
-        const card = document.createElement("div");
-        card.id = "card" + index;
-        cardPlaceholder.appendChild(card);
+        // const card = document.createElement("div");
+        // card.id = "card" + index;
+        // cardPlaceholder.appendChild(card);
+        
+          // $(`#${card.id}`).load("./card.html", function () {
+          //   card.querySelector("a").setAttribute("href", "./restaurant.html?" + element.name);
 
-        $(`#${card.id}`).load("./card.html", function () {
+            // document.getElementById("restName").innerHTML = element.name;
+            // document.getElementById("restName").id = "restName" + index;
+
+          //   const i = parseInt((element.food.up.length / (element.food.up.length + element.food.down.length) * 100));
+          //   document.getElementById("restFood").innerHTML = "Food Quality: " + i + "% &#128077;";
+          //   document.getElementById("restFood").id = "restFood" + index;
+
+          //   const j = parseInt((element.value.up.length / (element.value.up.length + element.value.down.length) * 100));
+          //   document.getElementById("restValue").innerHTML = "Value: " + j + "% &#128077;";
+          //   document.getElementById("restValue").id = "restValue" + index;
+
+          //   const k = parseInt((element.service.up.length / (element.service.up.length + element.service.down.length) * 100));
+          //   document.getElementById("restService").innerHTML = "Service: " + k + "% &#128077;";
+          //   document.getElementById("restService").id = "restService" + index;
+
+          //   const l = parseInt((element.language.up.length / (element.language.up.length + element.language.down.length) * 100));
+          //   document.getElementById("restLanguage").innerHTML = "Language Independency: " + l + "% &#128077;";
+          //   document.getElementById("restLanguage").id = "restLanguage" + index;
+
+          //   const recRevs = recentReviews(element);
+          //   document.getElementById("restRecentReviews").innerHTML = "Recent Reviews: " + recRevs;
+          //   document.getElementById("restRecentReviews").id = "restRecentReviews" + index;
+          // });
+
+          let cardTemplate = document.querySelector("#cardTemplate");
+          let card = cardTemplate.content.cloneNode(true);
+          card.id = "card" + index;
+
           card.querySelector("a").setAttribute("href", "./restaurant.html?" + element.name);
-
-          document.getElementById("restName").innerHTML = element.name;
-          document.getElementById("restName").id = "restName" + index;
+          card.querySelector("#restName").innerHTML = element.name;
+          card.querySelector("#restName").id = "restName" + index;
 
           const i = parseInt((element.food.up.length / (element.food.up.length + element.food.down.length) * 100));
-          document.getElementById("restFood").innerHTML = "Food Quality: " + i + "% &#128077;";
-          document.getElementById("restFood").id = "restFood" + index;
+          card.querySelector("#restFood").innerHTML = "Food Quality: " + i + "% &#128077;";
+          card.querySelector("#restFood").id = "restFood" + index;
 
           const j = parseInt((element.value.up.length / (element.value.up.length + element.value.down.length) * 100));
-          document.getElementById("restValue").innerHTML = "Value: " + j + "% &#128077;";
-          document.getElementById("restValue").id = "restValue" + index;
+          card.querySelector("#restValue").innerHTML = "Value: " + j + "% &#128077;";
+          card.querySelector("#restValue").id = "restValue" + index;
 
           const k = parseInt((element.service.up.length / (element.service.up.length + element.service.down.length) * 100));
-          document.getElementById("restService").innerHTML = "Service: " + k + "% &#128077;";
-          document.getElementById("restService").id = "restService" + index;
+          card.querySelector("#restService").innerHTML = "Service: " + k + "% &#128077;";
+          card.querySelector("#restService").id = "restService" + index;
 
           const l = parseInt((element.language.up.length / (element.language.up.length + element.language.down.length) * 100));
-          document.getElementById("restLanguage").innerHTML = "Language Independency: " + l + "% &#128077;";
-          document.getElementById("restLanguage").id = "restLanguage" + index;
+          card.querySelector("#restLanguage").innerHTML = "Little English Needed: " + l + "% &#128077;";
+          card.querySelector("#restLanguage").id = "restLanguage" + index;
 
           const recRevs = recentReviews(element);
-          document.getElementById("restRecentReviews").innerHTML = "Recent Reviews: " + recRevs;
-          document.getElementById("restRecentReviews").id = "restRecentReviews" + index;
-        });
+          card.querySelector("#restRecentReviews").innerHTML = "Recent Reviews: " + recRevs;
+          card.querySelector("#restRecentReviews").id = "restRecentReviews" + index;
 
+          card.querySelector("#restWebsite").id = "restWebsite" + index;
+          card.querySelector("#restMenu").id = "restMenu" + index;
+
+          document.querySelector("#resultsPlaceholder").appendChild(card);
       })
     }
-  })
+  }).then(() => {
+    console.log("Translate now");
+    // Loads translate.js after the results
+    let body = document.querySelector("body");
+    let translateScript = document.createElement("script");
+    translateScript.setAttribute("src", "./scripts/translate.js");
+    body.appendChild(translateScript);
+  });
+
 const recentReviews = rest => {
   const oneMonth = 155520000;
   const now = Date.now();
