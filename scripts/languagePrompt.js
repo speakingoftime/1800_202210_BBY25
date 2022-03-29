@@ -100,6 +100,12 @@ function translateToCn() {
   document.getElementById("valueLabel").innerText = "食物价值";
   document.getElementById("serviceLabel").innerText = "快速服务";
   document.getElementById("languageLabel").innerText = "不需要英文帮助";
+  // Language prompt content
+  document.getElementById("langBtn").innerText = "语言";
+  document.getElementById("offcanvasBottomLabel"). innerText = "改变语言";
+  document.getElementById("yesChangeLangBtn").innerText = "确认";
+  document.getElementById("noChangeLangBtn").innerText = "不用了，谢谢";
+  document.getElementById("askLaterLangBtn").innerText = "稍后再问";
 }
 
 // Changes content back to English
@@ -122,4 +128,10 @@ function translateToEng() {
   document.getElementById("valueLabel").innerText = "Value";
   document.getElementById("serviceLabel").innerText = "Service";
   document.getElementById("languageLabel").innerText = "Little English needed";
+  // Language prompt content
+  document.getElementById("langBtn").innerText = "Language";
+  document.getElementById("offcanvasBottomLabel"). innerText = "Change language";
+  document.getElementById("yesChangeLangBtn").innerText = "Yes";
+  document.getElementById("noChangeLangBtn").innerText = "No";
+  document.getElementById("askLaterLangBtn").innerText = "Later";
 }
