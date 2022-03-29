@@ -47,7 +47,7 @@ db.collection("restaurants").get()
     const l = parseInt((restPageRatings.language.up.length / (restPageRatings.language.up.length + restPageRatings.language.down.length) * 100));
     let langRatingDiv = document.createElement("div");
     restRatingsDiv.appendChild(langRatingDiv);
-    langRatingDiv.innerHTML = "Language Independency: " + l + "% &#128077;";
+    langRatingDiv.innerHTML = "Little English Needed: " + l + "% &#128077;";
 
     // recent reviews
     const recRevs = recentReviews(restPageRatings);
