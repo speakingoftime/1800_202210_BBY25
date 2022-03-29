@@ -112,6 +112,8 @@ function translateToCn() {
     document.getElementById("website").innerText = "网站";
     document.getElementById("phone").innerText = "电话号码";
     document.getElementById("ratings").innerText = "评分";
+    let hoursContent = document.getElementById("rest-hours-placeholder");
+    hoursContent.innerText = hoursContent.innerText.replace("7 days a week", "每天");
 
     let ratings = document.getElementById("rest-ratings-content");
     ratings.innerHTML = ratings.innerHTML.replace("Food Quality:", "食物品质 :");
@@ -247,6 +249,9 @@ function translateToEng() {
     document.getElementById("website").innerText = "Website";
     document.getElementById("phone").innerText = "Phone";
     document.getElementById("ratings").innerText = "Ratings";
+
+    let hoursContent = document.getElementById("rest-hours-placeholder");
+    hoursContent.innerText = hoursContent.innerText.replace("每天", "7 days a week");
 
     let ratings = document.getElementById("rest-ratings-content");
     ratings.innerHTML = ratings.innerHTML.replace("食物品质 :", "Food Quality:");
