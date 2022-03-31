@@ -32,7 +32,6 @@ function translateToCn() {
   // Search features
   if (document.getElementById("searchBtn")) {
     // Search bar
-    document.getElementById("searchBtn").innerText = "搜索";
     document.getElementById("searchBar").setAttribute("placeholder", "搜索");
     // Filters
     document.getElementById("filterDesc").innerText = "餐厅分类";
@@ -62,27 +61,27 @@ function translateToCn() {
     // Metrics : Food Quality
     let quality = results.querySelectorAll('li[id^="restFood"]');
     quality.forEach((element, index) => {
-      element.innerText = element.innerText.replace("Food Quality:", "食物品质 :");;
+      element.innerHTML = element.innerHTML.replace("Food Quality:", "食物品质 :");;
     });
     // Metrics : Food Value
     let value = results.querySelectorAll('li[id^="restValue"]');
     value.forEach((element, index) => {
-      element.innerText = element.innerText.replace("Value:", "食物价值 :");
+      element.innerHTML = element.innerHTML.replace("Value:", "食物价值 :");
     });
     // Metrics : Service
     let service = results.querySelectorAll('li[id^="restService"]');
     service.forEach((element, index) => {
-      element.innerText = element.innerText.replace("Service:", "快速服务 :");
+      element.innerHTML = element.innerHTML.replace("Service:", "快速服务 :");
     });
     // Metrics : Language
     let languageInd = results.querySelectorAll('li[id^="restLanguage"]');
     languageInd.forEach((element, index) => {
-      element.innerText = element.innerText.replace("Little English Needed:", "不需要英文帮助 :");
+      element.innerHTML = element.innerHTML.replace("Little English Needed:", "不需要英文帮助 :");
     });
     // Metrics : Recent Reviews
     let recentRev = results.querySelectorAll('li[id^="restRecentReviews"]');
     recentRev.forEach((element, index) => {
-      element.innerText = element.innerText.replace("Recent Reviews:", "最新评论 :");
+      element.innerHTML = element.innerHTML.replace("Recent Reviews:", "最新评论 :");
     });
     // Other : Website
     let website = results.querySelectorAll('a[id^="restWebsite"]');
@@ -99,21 +98,20 @@ function translateToCn() {
   // Saved List page
   if (document.getElementById("welcomeMsg")) {
     document.getElementById("welcomeMsg").innerText = "欢迎";
-    // document.getElementById("listHeading").innerText = "你保存的餐厅";
-    document.getElementById("pills-saves-tab").innerText = "你保存的餐厅";
-    document.getElementById("pills-language-tab").innerText = "你的语言";
+    document.getElementById("pills-saves-tab").innerHTML = document.getElementById("pills-saves-tab").innerHTML.replace('Your Saved List', '你保存的餐厅');
+    document.getElementById("pills-language-tab").innerHTML = document.getElementById("pills-language-tab").innerHTML.replace('Your Language', '你的语言');
     document.getElementById("langOptionsHeading").innerText = "改变语言 :";
   }
 
   // Restaurants page
   if (document.getElementById("address")) {
-    document.getElementById("address").innerText = "地址";
-    document.getElementById("hours").innerText = "营业时间";
-    document.getElementById("website").innerText = "网站";
-    document.getElementById("phone").innerText = "电话号码";
-    document.getElementById("ratings").innerText = "评分";
+    document.getElementById("address").innerHTML = document.getElementById("address").innerHTML.replace('Address', '地址');
+    document.getElementById("hours").innerHTML = document.getElementById("hours").innerHTML.replace('Hours', '营业时间');
+    document.getElementById("website").innerHTML = document.getElementById("website").innerHTML.replace('Website', '网站');
+    document.getElementById("phone").innerHTML = document.getElementById("phone").innerHTML.replace('Phone', '电话号码');
+    document.getElementById("ratings").innerHTML = document.getElementById("ratings").innerHTML.replace('Ratings', '评分');
     let hoursContent = document.getElementById("rest-hours-placeholder");
-    hoursContent.innerText = hoursContent.innerText.replace("7 days a week", "每天");
+    hoursContent.innerHTML = hoursContent.innerHTML.replace("7 days a week", "每天");
 
     let ratings = document.getElementById("rest-ratings-content");
     ratings.innerHTML = ratings.innerHTML.replace("Food Quality:", "食物品质 :");
@@ -125,7 +123,7 @@ function translateToCn() {
 
   // Review form
   if (document.getElementById("reviewForm")) {
-    document.getElementById("reviewButton").innerHTML = "评价餐厅";
+    document.getElementById("reviewButton").innerHTML = document.getElementById("reviewButton").innerHTML.replace('Leave a review!', '评价餐厅');
     document.querySelector("#submitButton button").innerHTML = "确认";
     let cardTitle = document.querySelectorAll(".card-title");
     cardTitle.forEach((element, index) => {
@@ -166,7 +164,6 @@ function translateToEng() {
   // Search features
   if (document.getElementById("searchBtn")) {
     // Search bar
-    document.getElementById("searchBtn").innerText = "Search";
     document.getElementById("searchBar").setAttribute("placeholder", "Search");
     // Filters
     document.getElementById("filterDesc").innerText = "Filter restaurants by:";
@@ -236,22 +233,21 @@ function translateToEng() {
   // Saved List page
   if (document.getElementById("welcomeMsg")) {
     document.getElementById("welcomeMsg").innerText = "Welcome";
-    // document.getElementById("listHeading").innerText = "Your saved restaurants";
-    document.getElementById("pills-saves-tab").innerText = "Your Saved List";
-    document.getElementById("pills-language-tab").innerText = "Your Language";
+    document.getElementById("pills-saves-tab").innerHTML = document.getElementById("pills-saves-tab").innerHTML.replace('你保存的餐厅', 'Your Saved List');
+    document.getElementById("pills-language-tab").innerHTML = document.getElementById("pills-language-tab").innerHTML.replace('你的语言', 'Your Language');
     document.getElementById("langOptionsHeading").innerText = "Change language:";
   }
 
   // Restaurants page
   if (document.getElementById("address")) {
-    document.getElementById("address").innerText = "Address";
-    document.getElementById("hours").innerText = "Hours";
-    document.getElementById("website").innerText = "Website";
-    document.getElementById("phone").innerText = "Phone";
-    document.getElementById("ratings").innerText = "Ratings";
+    document.getElementById("address").innerHTML = document.getElementById("address").innerHTML.replace('地址', 'Address');
+    document.getElementById("hours").innerHTML = document.getElementById("hours").innerHTML.replace('营业时间', 'Hours');
+    document.getElementById("website").innerHTML = document.getElementById("website").innerHTML.replace('网站', 'Website');
+    document.getElementById("phone").innerHTML = document.getElementById("phone").innerHTML.replace('电话号码', 'Phone');
+    document.getElementById("ratings").innerHTML = document.getElementById("ratings").innerHTML.replace('评分', 'Ratings');
 
     let hoursContent = document.getElementById("rest-hours-placeholder");
-    hoursContent.innerText = hoursContent.innerText.replace("每天", "7 days a week");
+    hoursContent.innerHTML = hoursContent.innerHTML.replace("每天", "7 days a week");
 
     let ratings = document.getElementById("rest-ratings-content");
     ratings.innerHTML = ratings.innerHTML.replace("食物品质 :", "Food Quality:");
@@ -263,7 +259,7 @@ function translateToEng() {
 
   // Review form
   if (document.getElementById("reviewForm")) {
-    document.getElementById("reviewButton").innerHTML = "Leavea a review!";
+    document.getElementById("reviewButton").innerHTML = document.getElementById("reviewButton").innerHTML.replace('评价餐厅', 'Leavea a review!');
     document.querySelector("#submitButton button").innerHTML = "Submit";
     let cardTitle = document.querySelectorAll(".card-title");
     cardTitle.forEach((element, index) => {
