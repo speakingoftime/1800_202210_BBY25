@@ -25,35 +25,35 @@ db.collection("restaurants").get()
     let restRatingsContent = document.getElementById("rest-ratings-content");
     restRatingsContent.appendChild(restRatingsDiv);
 
+    // language rating
+    const l = parseInt((restPageRatings.language.up.length / (restPageRatings.language.up.length + restPageRatings.language.down.length) * 100));
+    let langRatingDiv = document.createElement("div");
+    restRatingsDiv.appendChild(langRatingDiv);
+    langRatingDiv.innerHTML = '<img src="./images/icons/icons_language.svg" alt="language icon"/>Little English Needed: ' + l + "% &#128077;";
+
     // food rating
     const i = parseInt((restPageRatings.food.up.length / (restPageRatings.food.up.length + restPageRatings.food.down.length) * 100));
     let foodRatingDiv = document.createElement("div");
     restRatingsDiv.appendChild(foodRatingDiv);
-    foodRatingDiv.innerHTML = "Food Quality: " + i + "% &#128077;";
+    foodRatingDiv.innerHTML = '<img src="./images/icons/icons_foodQuality.svg" alt="food quality icon"/>Food Quality: ' + i + "% &#128077;";
 
     // value rating
     const j = parseInt((restPageRatings.value.up.length / (restPageRatings.value.up.length + restPageRatings.value.down.length) * 100));
     let valRatingDiv = document.createElement("div");
     restRatingsDiv.appendChild(valRatingDiv);
-    valRatingDiv.innerHTML = "Value: " + j + "% &#128077;";
+    valRatingDiv.innerHTML = '<img src="./images/icons/icons_value.svg" alt="value icon"/>Value: ' + j + "% &#128077;";
 
     // service rating
     const k = parseInt((restPageRatings.service.up.length / (restPageRatings.service.up.length + restPageRatings.service.down.length) * 100));
     let servRatingDiv = document.createElement("div");
     restRatingsDiv.appendChild(servRatingDiv);
-    servRatingDiv.innerHTML = "Service: " + k + "% &#128077;";
-
-    // language rating
-    const l = parseInt((restPageRatings.language.up.length / (restPageRatings.language.up.length + restPageRatings.language.down.length) * 100));
-    let langRatingDiv = document.createElement("div");
-    restRatingsDiv.appendChild(langRatingDiv);
-    langRatingDiv.innerHTML = "Little English Needed: " + l + "% &#128077;";
+    servRatingDiv.innerHTML = '<img src="./images/icons/icons_service.svg" alt="service icon"/>Service: ' + k + "% &#128077;";
 
     // recent reviews
     const recRevs = recentReviews(restPageRatings);
     let recReviewsDiv = document.createElement("div");
     restRatingsDiv.appendChild(recReviewsDiv);
-    recReviewsDiv.innerHTML = "Recent Reviews: " + recRevs;
+    recReviewsDiv.innerHTML = '<img src="./images/icons/icons_trending.svg" alt="recent reviews icon"/>Recent Reviews: ' + recRevs;
 
     // address
     document.getElementById("rest-address-placeholder").innerHTML = restPageRatings.address;
