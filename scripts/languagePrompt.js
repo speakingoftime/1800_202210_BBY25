@@ -92,7 +92,6 @@ function translateToCn() {
   document.querySelector("h1").innerText = "欢迎来到温哥华";
   document.querySelector("p").innerText = "你饿了吗? 在下方开始搜索";
   // Search bar
-  document.getElementById("searchBtn").innerText = "搜索";
   document.getElementById("searchBar").setAttribute("placeholder", "搜索");
   // Filters
   document.getElementById("filterDesc").innerText = "餐厅分类";
@@ -101,7 +100,7 @@ function translateToCn() {
   document.getElementById("serviceLabel").innerText = "快速服务";
   document.getElementById("languageLabel").innerText = "不需要英文帮助";
   // Language prompt content
-  document.getElementById("langBtn").innerText = "语言";
+  document.getElementById("langBtn").innerHTML = document.getElementById("langBtn").innerHTML.replace('Language', '语言');
   document.getElementById("offcanvasBottomLabel"). innerText = "改变语言";
   document.getElementById("yesChangeLangBtn").innerText = "确认";
   document.getElementById("noChangeLangBtn").innerText = "不用了，谢谢";
@@ -120,7 +119,6 @@ function translateToEng() {
   document.querySelector("h1").innerText = "Welcome to Vancouver";
   document.querySelector("p").innerText = "Hungry? Start your search below";
   // Search bar
-  document.getElementById("searchBtn").innerText = "Search";
   document.getElementById("searchBar").setAttribute("placeholder", "Search");
   // Filters
   document.getElementById("filterDesc").innerText = "Filter restaurants by:";
@@ -129,7 +127,7 @@ function translateToEng() {
   document.getElementById("serviceLabel").innerText = "Service";
   document.getElementById("languageLabel").innerText = "Little English needed";
   // Language prompt content
-  document.getElementById("langBtn").innerText = "Language";
+  document.getElementById("langBtn").innerHTML = document.getElementById("langBtn").innerHTML.replace('语言', 'Language');
   document.getElementById("offcanvasBottomLabel"). innerText = "Change language";
   document.getElementById("yesChangeLangBtn").innerText = "Yes";
   document.getElementById("noChangeLangBtn").innerText = "No";
