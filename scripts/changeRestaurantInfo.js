@@ -28,6 +28,12 @@ db.collection("restaurants").get()
     let restRatingsContent = document.getElementById("rest-ratings-content");
     restRatingsContent.appendChild(restRatingsDiv);
 
+    // language rating
+    const l = parseInt((Object.values(restPageRatings.service.up).length / (Object.values(restPageRatings.service.up).length + Object.values(restPageRatings.service.down).length) * 100))
+    let langRatingDiv = document.createElement("div");
+    restRatingsDiv.appendChild(langRatingDiv);
+    langRatingDiv.innerHTML = '<img src="./images/icons/icons_language.svg" alt="language icon"/>Little English Needed: ' + l + "% &#128077;";
+
     // food rating
     let foodUp = Object.values(restPageRatings.food.up).length;
     let foodDown = Object.values(restPageRatings.food.down).length;
@@ -48,17 +54,11 @@ db.collection("restaurants").get()
     restRatingsDiv.appendChild(servRatingDiv);
     servRatingDiv.innerHTML = '<img src="./images/icons/icons_service.svg" alt="service icon"/>Service: ' + k + "% &#128077;";
 
-    // language rating
-    const l = parseInt((Object.values(restPageRatings.service.up).length / (Object.values(restPageRatings.service.up).length + Object.values(restPageRatings.service.down).length) * 100))
-    let langRatingDiv = document.createElement("div");
-    restRatingsDiv.appendChild(langRatingDiv);
-    langRatingDiv.innerHTML = '<img src="./images/icons/icons_language.svg" alt="language icon"/>Little English Needed: ' + l + "% &#128077;";
-
     // recent reviews
     const recRevs = recentReviews(restPageRatings);
     let recReviewsDiv = document.createElement("div");
     restRatingsDiv.appendChild(recReviewsDiv);
-    recReviewsDiv.innerHTML = '<img src="./images/icons/icons_trending.svg" alt="recent reviews icon"/>Recent Reviews: ' + recRevs;
+    recReviewsDiv.innerHTML = '<img src="./images/icons/icons_trending.svg" alt="recent reviews icon"/>Recent Reviews:<br>' + recRevs;
 
     // address
     document.getElementById("rest-address-placeholder").innerHTML = restPageRatings.address;
