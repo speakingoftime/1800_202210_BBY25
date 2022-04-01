@@ -88,7 +88,7 @@ const populateRestaurants = () => {
     });
   })
 
-  const collection = db.collection("restaurantsJM");
+  const collection = db.collection("restaurants");
   for (let i = 0; i < restaurants.length; i++) {
     collection.add(restaurants[i]);
   }

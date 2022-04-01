@@ -28,29 +28,31 @@ db.collection("restaurants").get()
     let restRatingsContent = document.getElementById("rest-ratings-content");
     restRatingsContent.appendChild(restRatingsDiv);
 
-    // language rating
-    const l = parseInt((restPageRatings.language.up.length / (restPageRatings.language.up.length + restPageRatings.language.down.length) * 100));
-    let langRatingDiv = document.createElement("div");
-    restRatingsDiv.appendChild(langRatingDiv);
-    langRatingDiv.innerHTML = '<img src="./images/icons/icons_language.svg" alt="language icon"/>Little English Needed: ' + l + "% &#128077;";
-
     // food rating
-    const i = parseInt((restPageRatings.food.up.length / (restPageRatings.food.up.length + restPageRatings.food.down.length) * 100));
+    let foodUp = Object.values(restPageRatings.food.up).length;
+    let foodDown = Object.values(restPageRatings.food.down).length;
+    const i = parseInt((Object.values(restPageRatings.food.up).length / (Object.values(restPageRatings.food.up).length + Object.values(restPageRatings.food.down).length) * 100));
     let foodRatingDiv = document.createElement("div");
     restRatingsDiv.appendChild(foodRatingDiv);
     foodRatingDiv.innerHTML = '<img src="./images/icons/icons_foodQuality.svg" alt="food quality icon"/>Food Quality: ' + i + "% &#128077;";
 
     // value rating
-    const j = parseInt((restPageRatings.value.up.length / (restPageRatings.value.up.length + restPageRatings.value.down.length) * 100));
+    const j = parseInt((Object.values(restPageRatings.value.up).length / (Object.values(restPageRatings.value.up).length + Object.values(restPageRatings.value.down).length) * 100));
     let valRatingDiv = document.createElement("div");
     restRatingsDiv.appendChild(valRatingDiv);
     valRatingDiv.innerHTML = '<img src="./images/icons/icons_value.svg" alt="value icon"/>Value: ' + j + "% &#128077;";
 
     // service rating
-    const k = parseInt((restPageRatings.service.up.length / (restPageRatings.service.up.length + restPageRatings.service.down.length) * 100));
+    const k = parseInt((Object.values(restPageRatings.service.up).length / (Object.values(restPageRatings.service.up).length + Object.values(restPageRatings.service.down).length) * 100))
     let servRatingDiv = document.createElement("div");
     restRatingsDiv.appendChild(servRatingDiv);
     servRatingDiv.innerHTML = '<img src="./images/icons/icons_service.svg" alt="service icon"/>Service: ' + k + "% &#128077;";
+
+    // language rating
+    const l = parseInt((Object.values(restPageRatings.service.up).length / (Object.values(restPageRatings.service.up).length + Object.values(restPageRatings.service.down).length) * 100))
+    let langRatingDiv = document.createElement("div");
+    restRatingsDiv.appendChild(langRatingDiv);
+    langRatingDiv.innerHTML = '<img src="./images/icons/icons_language.svg" alt="language icon"/>Little English Needed: ' + l + "% &#128077;";
 
     // recent reviews
     const recRevs = recentReviews(restPageRatings);
@@ -120,12 +122,12 @@ const recentReviews = rest => {
   let recentDown = 0;
   for (prop in rest) {
     if (metrics.includes(prop)) {
-      rest[prop].up.forEach(element => {
+      Object.values(rest[prop].up).forEach(element => {
         if (now - element < oneMonth) {
           recentUp++;
         }
       })
-      rest[prop].down.forEach(element => {
+      Object.values(rest[prop].down).forEach(element => {
         if (now - element < oneMonth) {
           recentDown++;
         }
@@ -135,19 +137,21 @@ const recentReviews = rest => {
   const ratio = parseInt((recentUp / (recentUp + recentDown)) * 100);
   let ret = "";
   if (ratio >= 80) {
-    ret = "Overwhelmingly Positive";
+    ret = "\n┣ﾍ(^▽^ﾍ)Ξ(ﾟ▽ﾟ*)ﾉ┳━┳";
   }
-  else if (ratio >= 70) {
-    ret = "Mostly Positive";
+  else if (ratio >= 65) {
+    ret = "\n(´・(oo)・｀)";
   }
   else if (ratio >= 50) {
-    ret = "Mixed";
+    ret = "\n┬─┬ノ(ಠ_ಠノ)";
   }
-  else if (ratio >= 30) {
-    ret = "Mostly Negative";
+  else if (ratio >= 35) {
+    ret = "\n(ノಠ益ಠ)ノ彡┻━┻";
   }
-  else {
-    ret = "Overwhelmingly Negative";
+  else if (ratio >= 0) {
+    ret = "\n(╯°Д°）╯︵/(.□ . )";
+  } else {
+    ret = "¯\_(ツ)_/¯"
   }
   return ret;
 }
@@ -197,7 +201,7 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
         
           } else {
 
-          db.collection("jmTest").doc(docID).update({
+          db.collection("restaurants").doc(docID).update({
             [`food.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
             [`food.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
             [`value.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
@@ -209,7 +213,7 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
           });
 
             if (foodButton == "up") {
-              db.collection("jmTest").doc(docID).set({
+              db.collection("restaurants").doc(docID).set({
                 food: {
                   up: {
                     [userUID]: Date.now()
@@ -220,7 +224,7 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
               })
             }
             if (foodButton == "down") {
-              db.collection("jmTest").doc(docID).set({
+              db.collection("restaurants").doc(docID).set({
                 food: {
                   down: {
                     [userUID]: Date.now()
@@ -231,7 +235,7 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
               })
             }
             if (valueButton == "up") {
-              db.collection("jmTest").doc(docID).set({
+              db.collection("restaurants").doc(docID).set({
                 value: {
                   up: {
                     [userUID]: Date.now()
@@ -242,7 +246,7 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
               })
             }
             if (valueButton == "down") {
-              db.collection("jmTest").doc(docID).set({
+              db.collection("restaurants").doc(docID).set({
                 value: {
                   down: {
                     [userUID]: Date.now()
@@ -253,7 +257,7 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
               })
             }
             if (serviceButton == "up") {
-              db.collection("jmTest").doc(docID).set({
+              db.collection("restaurants").doc(docID).set({
                 service: {
                   up: {
                     [userUID]: Date.now()
@@ -264,7 +268,7 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
               })
             }
             if (serviceButton == "down") {
-              db.collection("jmTest").doc(docID).set({
+              db.collection("restaurants").doc(docID).set({
                 service: {
                   down: {
                     [userUID]: Date.now()
@@ -275,7 +279,7 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
               })
             }
             if (languageButton == "up") {
-              db.collection("jmTest").doc(docID).set({
+              db.collection("restaurants").doc(docID).set({
                 language: {
                   up: {
                     [userUID]: Date.now()
@@ -286,7 +290,7 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
               })
             }
             if (languageButton == "down") {
-              db.collection("jmTest").doc(docID).set({
+              db.collection("restaurants").doc(docID).set({
                 language: {
                   down: {
                     [userUID]: Date.now()
