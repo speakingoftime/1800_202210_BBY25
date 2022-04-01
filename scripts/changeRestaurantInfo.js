@@ -20,6 +20,9 @@ db.collection("restaurants").get()
     // Changes restaurant name
     document.getElementById("rest-name-placeholder").innerText = restPageName;
 
+    // Populate photos
+    populatePhotos(restPageRatings.photoPrefix);
+
     // Creates a div to hold all the ratings
     let restRatingsDiv = document.createElement("div");
     let restRatingsContent = document.getElementById("rest-ratings-content");
@@ -79,6 +82,35 @@ db.collection("restaurants").get()
     translateScript.setAttribute("src", "./scripts/translate.js");
     body.appendChild(translateScript);
   })
+
+// Gets img urls from Firebase Storage based on the photoPrefix field of a restaurant
+// Called after restaurant document is retrieved from Firestore
+const populatePhotos = (photoPrefix) => {
+  const carousel = document.querySelector(".carousel-inner");
+  const numPhotos = 5;
+  const storageRef = firebase.storage().ref();
+  
+  // Restaurants currently have exactly 5 photos
+  for(let i = 1; i <= numPhotos; i++) {    
+    storageRef.child(`/imgs/${photoPrefix}_0${i}.jpeg`).getDownloadURL()
+    .then(url => {
+      // Create carousel item div
+      const tempDiv = document.createElement("div");
+      tempDiv.classList.add("carousel-item");
+      if (i == 1) {
+        tempDiv.classList.add("active");
+      }
+      carousel.appendChild(tempDiv);
+
+      // Create img tag
+      const tempImg = document.createElement("img");
+      tempImg.classList.add("rest-img-placeholder");
+      tempImg.alt = "...";
+      tempImg.src = url;
+      tempDiv.appendChild(tempImg);
+    })
+  }
+}
 
 const recentReviews = rest => {
   const oneMonth = 155520000;

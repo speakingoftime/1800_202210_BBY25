@@ -8,7 +8,8 @@ db.collection("restaurants").get()
         "food": doc.data().food,
         "service": doc.data().service,
         "value": doc.data().value,
-        "language": doc.data().language
+        "language": doc.data().language,
+        "photoPrefix": doc.data().photoPrefix
       });
     })
   }).then(() => {
@@ -92,36 +93,42 @@ db.collection("restaurants").get()
           let cardTemplate = document.querySelector("#cardTemplate");
           let card = cardTemplate.content.cloneNode(true);
           card.id = "card" + index;
-
-          card.querySelector("a").setAttribute("href", "./restaurant.html?" + element.name);
-          card.querySelector("#restName").innerHTML = element.name;
-          card.querySelector("#restName").id = "restName" + index;
-
-          const i = parseInt((element.food.up.length / (element.food.up.length + element.food.down.length) * 100));
-          card.querySelector("#restFood").innerHTML = "Food Quality: " + i + "% &#128077;";
-          card.querySelector("#restFood").id = "restFood" + index;
-
-          const j = parseInt((element.value.up.length / (element.value.up.length + element.value.down.length) * 100));
-          card.querySelector("#restValue").innerHTML = "Value: " + j + "% &#128077;";
-          card.querySelector("#restValue").id = "restValue" + index;
-
-          const k = parseInt((element.service.up.length / (element.service.up.length + element.service.down.length) * 100));
-          card.querySelector("#restService").innerHTML = "Service: " + k + "% &#128077;";
-          card.querySelector("#restService").id = "restService" + index;
-
-          const l = parseInt((element.language.up.length / (element.language.up.length + element.language.down.length) * 100));
-          card.querySelector("#restLanguage").innerHTML = "Little English Needed: " + l + "% &#128077;";
-          card.querySelector("#restLanguage").id = "restLanguage" + index;
-
-          const recRevs = recentReviews(element);
-          card.querySelector("#restRecentReviews").innerHTML = "Recent Reviews: " + recRevs;
-          card.querySelector("#restRecentReviews").id = "restRecentReviews" + index;
-
-          card.querySelector("#restWebsite").id = "restWebsite" + index;
-          card.querySelector("#restMenu").id = "restMenu" + index;
-
-          document.querySelector("#resultsPlaceholder").appendChild(card);
-      })
+          const storageRef = firebase.storage().ref();
+          storageRef.child(`/imgs/${element.photoPrefix}_01.jpeg`).getDownloadURL()
+            .then(url => {
+              const tempImg = card.getElementById("restImg");
+              tempImg.src = url;
+              tempImg.id = "restImg" + index;
+              card.querySelector("a").setAttribute("href", "./restaurant.html?" + element.name);
+              card.querySelector("#restName").innerHTML = element.name;
+              card.querySelector("#restName").id = "restName" + index;
+              
+              const i = parseInt((element.food.up.length / (element.food.up.length + element.food.down.length) * 100));
+              card.querySelector("#restFood").innerHTML = "Food Quality: " + i + "% &#128077;";
+              card.querySelector("#restFood").id = "restFood" + index;
+              
+              const j = parseInt((element.value.up.length / (element.value.up.length + element.value.down.length) * 100));
+              card.querySelector("#restValue").innerHTML = "Value: " + j + "% &#128077;";
+              card.querySelector("#restValue").id = "restValue" + index;
+              
+              const k = parseInt((element.service.up.length / (element.service.up.length + element.service.down.length) * 100));
+              card.querySelector("#restService").innerHTML = "Service: " + k + "% &#128077;";
+              card.querySelector("#restService").id = "restService" + index;
+              
+              const l = parseInt((element.language.up.length / (element.language.up.length + element.language.down.length) * 100));
+              card.querySelector("#restLanguage").innerHTML = "Little English Needed: " + l + "% &#128077;";
+              card.querySelector("#restLanguage").id = "restLanguage" + index;
+              
+              const recRevs = recentReviews(element);
+              card.querySelector("#restRecentReviews").innerHTML = "Recent Reviews: " + recRevs;
+              card.querySelector("#restRecentReviews").id = "restRecentReviews" + index;
+                
+              card.querySelector("#restWebsite").id = "restWebsite" + index;
+              card.querySelector("#restMenu").id = "restMenu" + index;
+                
+              document.querySelector("#resultsPlaceholder").appendChild(card);
+          })
+        })
     }
   }).then(() => {
     console.log("Translate now");
@@ -138,7 +145,7 @@ const recentReviews = rest => {
   let recentUp = 0;
   let recentDown = 0;
   for (prop in rest) {
-    if (prop !== "name") {
+    if (prop !== "name" && prop !== "photoPrefix") {
       rest[prop].up.forEach(element => {
         if (now - element < oneMonth) {
           recentUp++;

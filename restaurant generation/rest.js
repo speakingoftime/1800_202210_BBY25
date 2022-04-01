@@ -27,7 +27,7 @@ const populateRestaurants = () => {
     "Andrew", "Lillian"]
 
   const food = ["Sushi", "Pasta", "Steakhouse", "Ramen", "Pho", "Dumpling House", "Pizzeria", "Thai", "Seafood", "Halal", "Southern Restaurant", "Mexican Restaurant", "Indian Restaurant", "French Cuisine", "Poké", "Sandwich Shop", "Burgers"]
-
+  const photo = ["sushi", "pasta", "steak", "ramen", "pho", "dumpling", "pizzeria", "thai", "seafood", "halal", "southern", "mexican", "indian", "french", "poke", "sandwich", "burger"];
   const genTimestamps = () => {
     const twoMonths = 311040000;
     const numStamps = Math.floor(Math.random() * 200);
@@ -74,8 +74,8 @@ const populateRestaurants = () => {
       phoneNumber: "+1 604-555-" + (index < 10 ? "000" + index : "00" + index),
       hours: "7 days a week " + openingHours[Math.floor(Math.random() * openingHours.length)] + " - " +
         closingHours[Math.floor(Math.random() * closingHours.length)],
-      website: "www." + restName.replace(/'| /g, "").toLowerCase() + ".com"
-
+      website: "www." + restName.replace(/'| /g, "").toLowerCase() + ".com",
+      photoPrefix: photo[foodIndex]
     });
   })
 
