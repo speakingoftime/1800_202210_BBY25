@@ -1,4 +1,3 @@
-
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     let savedList = db.collection("users").doc(user.uid);
@@ -27,12 +26,25 @@ firebase.auth().onAuthStateChanged((user) => {
         let savedCardTemplate = document.getElementById("savedCardTemplate");
         let savedListCard = document.getElementById("saved-list-placeholder");
         if (currentData.length !== 0) {
-          currentData.forEach(element => {
+          currentData.forEach((element, index) => {
             const savedCard = savedCardTemplate.content.cloneNode(true);
             let name = savedCard.querySelector(".card-title").innerText = element;
             savedCard.querySelector("a").setAttribute("href", "./restaurant.html?" + element);
             let saveBtn = savedCard.getElementById("btn-check-outlined");
             let count = 1;
+            const tempImg = savedCard.getElementById("restImg");
+            tempImg.id = "restImg" + index;
+            db.collection("restaurants").where("name", "==", element).limit(1).get()
+              .then(result => {
+                result.forEach(element => {
+                  const storageRef = firebase.storage().ref();
+                  storageRef.child(`/imgs/${element.data().photoPrefix}_01.jpeg`).getDownloadURL()
+                    .then(url => {
+                      const tempImg2 = document.getElementById("restImg" + index);
+                      tempImg2.src = url;
+                    })
+                })
+              })
 
             // Determine save button functions
             saveBtn.addEventListener("click", function() {
@@ -87,4 +99,3 @@ firebase.auth().onAuthStateChanged((user) => {
     loginModal.show(loginModal);
   };
 });
-
