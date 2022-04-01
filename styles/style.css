@@ -2,33 +2,230 @@
 html, body {
   font-family: "Montserrat", sans-serif;
 }
-
-#rest-img-placeholder {
-  width: 100%;
+h1, h3 {
+  color: #1E2859;
+  font-weight: 700;
 }
+
+/********** All buttons **********/
+button {
+  border-radius: 0 !important;
+}
+.btn-primary {
+  border-color: #1E2859;
+  background-color: #1E2859;
+}
+.btn-outline-primary {
+  color: #1E2859;
+  border-color: #1E2859;
+}
+.btn-outline-primary:hover {
+  color: #1E2859;
+  background-color: #29BDE4;
+}
+
+/********** All: Navbar **********/
+#navHeader {
+  height: 8vh;
+}
+#logo {
+  height: 5vh;
+}
+.navbar.bg-light {
+  background-color: white !important;
+}
+.navbar-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(30, 40, 89, 1)' stroke-linecap='square' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+.navbar-light .navbar-toggler {
+  border: none;
+}
+.nav-link:hover, 
+.nav-link:active, 
+.nav-link:focus {
+  color: #1E2859 !important;
+}
+
+/********** Index, Main.html: Hero **********/
+.hero {
+  color: #1E2859;
+  background-image: url("/images/hero_bkg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 20vh;
+}
+#heroIndex {
+  background-position: top;
+}
+#heroMain {
+  background-position: bottom;
+}
+.hero h1 {
+  font-size: 2.2em;
+}
+.hero p {
+  margin-top: 1em;
+}
+#downArrow {
+  width: 2.2em;
+}
+
+/********** Search form **********/
+#searchContainer {
+  background-color: #1E2859;
+}
+#searchContainer img {
+  width: 2.5em;
+}
+#searchForm .input-group {
+  height: 48px;
+}
+#searchBar {
+  border: none;
+}
+#searchBtn {
+  height: 100%;
+  border: none;
+  color: #1E2859;
+  background-color: #8BBA40;
+}
+#searchBtn:hover {
+  color: white;
+  background-color: #1E6D00;
+}
+#searchForm > div {
+  background-color: #EBF7FA;
+  color: #1E2859;
+}
+#searchForm .form-check-input {
+  width: 3.25em;
+  height: 1.5em;
+}
+
+/********** Search, Main.html: Cards **********/
+#resultsPlaceholder {
+  color: #1E2859;
+}
+#resultsPlaceholder a {
+  text-decoration: none;
+  color: #1E2859;
+}
+.card, 
+.card img {
+  border-radius: 0;
+}
+.card-body {
+  background-color: #EBF7FA;
+}
+.card-title {
+  color: #1E2859;
+  font-weight: 700;
+  margin: 0;
+}
+.card-body:last-of-type a:first-of-type {
+  background-color: #8BBA40;
+  transition: background-color 0.1s ease-in-out;
+}
+.card-body:last-of-type a:first-of-type:hover {
+  background-color: #1E6D00;
+}
+.card-body:last-of-type a:last-of-type {
+  background-color: #29BDE4;
+  transition: background-color 0.1s ease-in-out;
+}
+.card-body:last-of-type a:last-of-type:hover {
+  background-color: #268da9;
+}
+.card {
+  transition: box-shadow 0.2s ease-in-out;
+}
+.card:hover {
+  /* outline: #1E2859 inset 2px; */
+  box-shadow: 0px 8px 16px rgba(30, 40, 89, 0.2);
+}
+.card li {
+  color: #1E2859;
+}
+.card li img {
+  width: 1.5em;
+  margin-top: -0.25em;
+  margin-right: 0.5em;
+}
+
+#btn-check-outlined {
+  /* background-color: white; */
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/********** Main.html **********/
+.nav-link .material-icons {
+  color: #1E2859;
+  font-size: 1.3em;
+}
+.nav-pills .nav-link {
+  background-color: #EBF7FA !important;
+  font-size: 0.9em;
+  color: #1E2859;
+}
+.nav-pills .nav-link:hover,
+.nav-pills .nav-link:focus {
+  background-color: #bde2ec !important;
+}
+.nav-pills .nav-link.active {
+  color: #1E2859;
+  background-color: #29BDE4 !important;
+}
+.nav-pills .nav-link.active:hover,
+.nav-pills .nav-link.active:focus {
+  color: #1E2859;
+  background-color: #268da9 !important;
+}
+
+/********** Restaurant page **********/
 .rest-img-placeholder {
   width: 100%;
 }
-
-#restaurant-page-container h2 {
-  font-size: 1.25em;
+.restKeyInfo {
+  border: 1px solid #1E2859;
 }
-
-/* Make the icon display side-by-side with the restaurant page label */
+#restaurant-page-container {
+  color: #1E2859;
+}
+#rest-name-wrapper {
+  position: relative;
+  height: 10vh;
+  background-color: #EBF7FA;
+}
+#restaurant-page-container h1 {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+#restaurant-page-container h2 {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #268da9;
+}
+#restaurant-page-container button {
+  top: 1em;
+  right: 1em;
+}
+#rest-website-placeholder a {
+  text-decoration: none;
+  color: #1E2859;
+}
+#rest-ratings-content img {
+  width: 2em;
+  margin-right: 0.5em;
+}
 .rest-content-label {
   display: flex;
+  border-bottom: 1px solid rgba(0,0,0,.125);
+  margin-bottom: 0.5em;
 }
-
-#resultsPlaceholder a {
-  text-decoration: none;
-}
-
-#rest-name-wrapper {
-  height: 10vh;
-}
-
-#logo {
-  height: 5vh;
+#rest-ratings-content div:last-of-type > div {
+  padding: 0.5em 0;
 }
 
 #reviewForm {

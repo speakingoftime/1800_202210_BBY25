@@ -9,6 +9,10 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
+  <!-- Bootstrap Library CSS CDN go here -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
   <!-- Google Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 
@@ -19,7 +23,7 @@
 <body>
   <!-- NAVBAR -->
   <div class="pos-f-t">
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light" id="navHeader">
         <svg id="backButton" class="mx-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
           width="24px" fill="#29BDE4" onclick="window.history.back()" style="cursor: pointer;">
           <path d="M0 0h24v24H0z" fill="none" />
@@ -42,37 +46,49 @@
   </div>
 
   <!-- Restaurant page container -->
-  <div id="restaurant-page-container" class="container mt-8">
+  <div id="restaurant-page-container" class="container">
     <div id="restaurant-content-placeholder">
-
-      <!-- Restaurant name-->
-      <div id="rest-name-wrapper" class="d-flex justify-content-between align-items-center">
-        <h1 id="rest-name-placeholder" class="py-2">Restaurant Name</h1>
-        <!-- Save restaurant icon -->
-        <button type="button" class="btn btn-outline-danger" id="btn-check-outlined">
-          <span class="saveIcon material-icons pt-2">favorite_border</span>
-        </button>
-        <!-- <label class="btn btn-outline-danger" for="btn-check-outlined"><span class="saveIcon material-icons pt-2">favorite_border</span></label> -->
-      </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="loginModalLabel">Hello!</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="mx-2 mb-4 restKeyInfo">
+        <!-- Image gallery -->
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"
+              aria-current="true"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"
+              class=""></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"
+              class=""></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="rest-img-placeholder" src="https://dummyimage.com/400x240/000/fff" alt="..." />
             </div>
-            <div class="modal-body border-top-0">
-              <p id="loginModalMsg">Please log in</p>
+            <div class="carousel-item">
+              <img class="rest-img-placeholder" src="https://dummyimage.com/400x240/000/fff" alt="..." />
             </div>
-            <div class="modal-footer border-top-0">
-              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="modalClose">No, thanks</button>
-              <a href="./login.html" role="button" class="btn btn-primary" id="loginModalBtn">Log in</a>
+            <div class="carousel-item">
+              <img class="rest-img-placeholder" src="https://dummyimage.com/400x240/000/fff" alt="..." />
             </div>
           </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden" id="prevImg">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden" id="nextImg">Next</span>
+          </button>
         </div>
-      </div>
+        
+        <!-- Restaurant name-->
+        <div id="rest-name-wrapper" class="d-grid justify-content-between align-items-center">
+          <h1 class="col-10 mt-2 me-5 px-3" id="rest-name-placeholder">Restaurant Name</h1>
+          <!-- Save restaurant icon -->
+          <button type="button" class="btn btn-outline-danger col-2" id="btn-check-outlined">
+            <span class="saveIcon material-icons pt-2">favorite_border</span>
+          </button>
+          <!-- <label class="btn btn-outline-danger" for="btn-check-outlined"><span class="saveIcon material-icons pt-2">favorite_border</span></label> -->
+        </div>
 
       <!-- Starts with an image gallery here. There's some CSS being used on the images -->
       <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
@@ -89,142 +105,65 @@
             class=""></button>
         </div>
         <div class="carousel-inner">
+        <!-- Restaurant info -->
+        <div id="rest-address" class="mt-3 px-3">
+          <div class="rest-content-label">
+            <h2 class="d-flex align-self-center" id="address">
+              <span class="material-icons me-2">store</span>
+              Address</h2>
+          </div>
+          <p id="rest-address-placeholder">1234 Street Avenue, Vancouver, BC V1A 2B3</p>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden" id="prevImg">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden" id="nextImg">Next</span>
-        </button>
+        <div id="rest-hours" class="px-3">
+          <div class="rest-content-label">
+            <h2 class="d-flex align-self-center" id="hours">
+              <span class="material-icons me-2">schedule</span>
+              Hours</h2>
+          </div>
+          <p id="rest-hours-placeholder">M-F | 11:00am – 9:00pm</p>
+        </div>
+        <div id="rest-contact" class="px-3">
+          <div class="rest-content-label">
+            <h2 class="d-flex align-self-center" id="website">
+              <span class="material-icons me-2">link</span>
+              Website</h2>
+          </div>
+          <p id="rest-website-placeholder"><a target="_blank" href="website.com" id="linkPlaceholder">www.website.com</a></p>
+          <div class="rest-content-label">
+            <h2 class="d-flex align-self-center" id="phone">
+              <span class="material-icons me-2">call</span>
+              Phone</h2>
+          </div>
+          <p id="rest-phone-placeholder">+11234567890</p>
+        </div>
       </div>
-
-      <!-- Need to include icons for each section -->
-      <div id="rest-address" class="mt-4">
-        <div class="rest-content-label">
-          <img class="me-2" src="https://dummyimage.com/32/000/fff" alt="..." />
-          <h2 id="address">Address</h2>
-        </div>
-        <p id="rest-address-placeholder">1234 Street Avenue, Vancouver, BC V1A 2B3</p>
-      </div>
-      <div id="rest-hours">
-        <div class="rest-content-label">
-          <img class="me-2" src="https://dummyimage.com/32/000/fff" alt="..." />
-          <h2 id="hours">Hours</h2>
-        </div>
-        <p id="rest-hours-placeholder">M-F | 11:00am – 9:00pm</p>
-      </div>
-      <div id="rest-contact">
-        <div class="rest-content-label">
-          <img class="me-2" src="https://dummyimage.com/32/000/fff" alt="..." />
-          <h2 id="website">Website</h2>
-        </div>
-        <p id="rest-website-placeholder"><a target="_blank" href="website.com" id="linkPlaceholder">www.website.com</a></p>
-        <div class="rest-content-label">
-          <img class="me-2" src="https://dummyimage.com/32/000/fff" alt="..." />
-          <h2 id="phone">Phone</h2>
-        </div>
-        <p id="rest-phone-placeholder">+11234567890</p>
-      </div>
-
       <!-- This should be where the ratings go -->
-      <div id="rest-ratings-content">
+      <div id="rest-ratings-content" class="px-3">
         <div class="rest-content-label">
-          <img class="me-2" src="https://dummyimage.com/32/000/fff" alt="..." />
-          <h2 id="ratings">Ratings</h2>
+          <h2 class="d-flex align-self-center" id="ratings">
+            <span class="material-icons me-2">reviews</span>
+            Ratings</h2>
         </div>
       </div>
 
     </div>
 
     <!-- Review button -->
-    <div id="reviewButtonContainer"><br/>
-      <button type="button" class="btn btn-info" id="reviewButton">Leave a review!</button>
+    <div id="reviewButtonContainer" class="px-3"><br/>
+      <button type="button" class="btn btn-info d-flex align-self-center" id="reviewButton">
+        <span class="material-icons me-2">thumb_up_off_alt</span>
+        Leave a review!</button>
     </div>
 
     <!-- Review Form -->
     <form id="reviewForm">
-      <div class="justify-content-center"><br />
-
-        <!-- Food Review -->
+      <div class="justify-content-center px-3"><br />
         <div class="card text-center">
-          <div class="card-body">
-            <h5 class="card-title">Food Quality</h5>
-            <div id="foodButton">
-              <div class="btn-group btn-group-toggle"
-                    data-toggle="buttons">
-                <label class="btn btn-success active">
-                  <input type="radio"
-                          name="food"
-                          id="foodTU"
-                          value="up"
-                          autocomplete="off">&#128077; </label>
-                <label class="btn btn-danger">
-                  <input type="radio"
-                          name="food"
-                          id="foodTD"
-                          value="down"
-                          autocomplete="off">&#128078; </label>
-              </div>
-            </div>
-          </div>
-        </div><br />
-
-        <!-- Value Review -->
-        <div class="card text-center">
-          <div class="card-body">
-            <h5 class="card-title">Value</h5>
-            <div id="valueButton">
-              <div class="btn-group btn-group-toggle"
-                    data-toggle="buttons">
-                <label class="btn btn-success active">
-                  <input type="radio"
-                          name="value"
-                          id="valueTU"
-                          value="up"
-                          autocomplete="off">&#128077; </label>
-                <label class="btn btn-danger">
-                  <input type="radio"
-                          name="value"
-                          id="valueTD"
-                          value="down"
-                          autocomplete="off">&#128078; </label>
-              </div>
-            </div>
-          </div>
-        </div><br />
-
-        <!-- Service Review -->
-        <div class="card text-center">
-          <div class="card-body">
-            <h5 class="card-title">Service</h5>
-            <div id="serviceButton">
-              <div class="btn-group btn-group-toggle"
-                    data-toggle="buttons">
-                <label class="btn btn-success active">
-                  <input type="radio"
-                          name="service"
-                          id="serviceTU"
-                          value="up"
-                          autocomplete="off">&#128077; </label>
-                <label class="btn btn-danger">
-                  <input type="radio"
-                          name="service"
-                          id="serviceTD"
-                          value="down"
-                          autocomplete="off">&#128078; </label>
-              </div>
-            </div>
-          </div>
-        </div><br />
-
-        <!-- Language Review -->
-        <div class="card text-center">
-          <div class="card-body">
-            <h5 class="card-title">Little English Needed</h5>
+          <div class="card-body py-4">
+            <!-- Language Review -->
+            <h5 class="card-title mt-2">Little English Needed</h5>
             <div id="languageButton">
-              <div class="btn-group btn-group-toggle"
+              <div class="btn-group btn-group-toggle mt-2"
                     data-toggle="buttons">
                 <label class="btn btn-success active">
                   <input type="radio"
@@ -240,33 +179,100 @@
                           autocomplete="off">&#128078; </label>
               </div>
             </div>
-          </div>
-        </div><br />
 
-      </div>
+            <!-- Food Review -->
+            <h5 class="card-title mt-3">Food Quality</h5>
+            <div id="foodButton">
+              <div class="btn-group btn-group-toggle mt-2"
+                    data-toggle="buttons">
+                <label class="btn btn-success active">
+                  <input type="radio"
+                          name="food"
+                          id="foodTU"
+                          value="up"
+                          autocomplete="off">&#128077; </label>
+                <label class="btn btn-danger">
+                  <input type="radio"
+                          name="food"
+                          id="foodTD"
+                          value="down"
+                          autocomplete="off">&#128078; </label>
+              </div>
 
-      <!-- Submit Button -->
-      <div class="card text-center">
-        <div class="card-body">
-          <div id="submitButton">
-            <button type="submit" class="btn btn-primary">Submit</button>
-            </label>
+              <!-- Value Review -->
+              <h5 class="card-title mt-3">Value</h5>
+              <div id="valueButton">
+                <div class="btn-group btn-group-toggle mt-2"
+                      data-toggle="buttons">
+                  <label class="btn btn-success active">
+                    <input type="radio"
+                            name="value"
+                            id="valueTU"
+                            value="up"
+                            autocomplete="off">&#128077; </label>
+                  <label class="btn btn-danger">
+                    <input type="radio"
+                            name="value"
+                            id="valueTD"
+                            value="down"
+                            autocomplete="off">&#128078; </label>
+                </div>
+              </div>
+
+              <!-- Service Review -->
+              <h5 class="card-title mt-3">Service</h5>
+              <div id="serviceButton">
+                <div class="btn-group btn-group-toggle mt-2"
+                      data-toggle="buttons">
+                  <label class="btn btn-success active">
+                    <input type="radio"
+                            name="service"
+                            id="serviceTU"
+                            value="up"
+                            autocomplete="off">&#128077; </label>
+                  <label class="btn btn-danger">
+                    <input type="radio"
+                            name="service"
+                            id="serviceTD"
+                            value="down"
+                            autocomplete="off">&#128078; </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mt-4" id="submitButton">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
           </div>
         </div>
-      </div><br />
+      </div>
     </form>
 
   </div> <!-- Restaurant page container ends -->
 
-
-
-  <!-- Footer -->
-  <div class="footer-copyright text-center text-black-50 py-3">©2022 FoodFinderVancouver.
+  <!-- Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Hello!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body border-top-0">
+          <p id="loginModalMsg">Please log in</p>
+        </div>
+        <div class="modal-footer border-top-0">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="modalClose">No, thanks</button>
+          <a href="./login.html" role="button" class="btn btn-primary" id="loginModalBtn">Log in</a>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Bootstrap Library CSS CDN go here -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Footer -->
+  <div class="footer-copyright text-center text-black-50 py-3 mt-5">©2022 FoodFinderVancouver.
+  </div>
 
   <!-- Boostrap Library JS CDN  go here -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

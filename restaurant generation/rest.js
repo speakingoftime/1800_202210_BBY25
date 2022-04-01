@@ -30,12 +30,21 @@ const populateRestaurants = () => {
   const photo = ["sushi", "pasta", "steak", "ramen", "pho", "dumpling", "pizzeria", "thai", "seafood", "halal", "southern", "mexican", "indian", "french", "poke", "sandwich", "burger"];
   const genTimestamps = () => {
     const twoMonths = 311040000;
-    const numStamps = Math.floor(Math.random() * 200);
-    const arr = [];
-    for (let i = 0; i < numStamps; i++) {
-      arr.push(Date.now() - Math.floor(Math.random() * twoMonths));
+    return (Date.now() - Math.floor(Math.random() * twoMonths));
+  }
+
+  const uuidv4 = () => {
+    return ([1e7]+1e19).replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
+  }
+
+  const genReview = (upperbound) => {
+    const myRandom = upperbound ? Math.floor(Math.random() * 25 + 25) : Math.floor(Math.random() * 50)
+    const ret = {};
+    for (let i = 0; i < myRandom; i++) {
+      ret[uuidv4()] = genTimestamps();
     }
-    return arr;
+    return ret;
   }
 
   const restaurants = [];
@@ -49,20 +58,20 @@ const populateRestaurants = () => {
     restaurants.push({
       name: restName,
       food: {
-        up: genTimestamps(),
-        down: genTimestamps()
+        up: genReview(true),
+        down: genReview(false)
       },
       value: {
-        up: genTimestamps(),
-        down: genTimestamps()
+        up: genReview(true),
+        down: genReview(false)
       },
       service: {
-        up: genTimestamps(),
-        down: genTimestamps()
+        up: genReview(true),
+        down: genReview(false)
       },
       language: {
-        up: genTimestamps(),
-        down: genTimestamps()
+        up: genReview(true),
+        down: genReview(false)
       },
       address: Math.floor(Math.random() * 10000) + " " +  
         streetNames[Math.floor(Math.random() * streetNames.length)] + ", V" +  
@@ -79,7 +88,7 @@ const populateRestaurants = () => {
     });
   })
 
-  const collection = db.collection("restaurants");
+  const collection = db.collection("restaurantsJM");
   for (let i = 0; i < restaurants.length; i++) {
     collection.add(restaurants[i]);
   }

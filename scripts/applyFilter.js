@@ -104,23 +104,23 @@ db.collection("restaurants").get()
               card.querySelector("#restName").id = "restName" + index;
               
               const i = parseInt((element.food.up.length / (element.food.up.length + element.food.down.length) * 100));
-              card.querySelector("#restFood").innerHTML = "Food Quality: " + i + "% &#128077;";
+              card.querySelector("#restFood").innerHTML = '<img src="./images/icons/icons_foodQuality.svg" alt="food quality icon"/>Food Quality: ' + i + "% &#128077;";
               card.querySelector("#restFood").id = "restFood" + index;
               
               const j = parseInt((element.value.up.length / (element.value.up.length + element.value.down.length) * 100));
-              card.querySelector("#restValue").innerHTML = "Value: " + j + "% &#128077;";
+              card.querySelector("#restValue").innerHTML = '<img src="./images/icons/icons_value.svg" alt="value icon"/>Value: ' + j + "% &#128077;";
               card.querySelector("#restValue").id = "restValue" + index;
               
               const k = parseInt((element.service.up.length / (element.service.up.length + element.service.down.length) * 100));
-              card.querySelector("#restService").innerHTML = "Service: " + k + "% &#128077;";
+              card.querySelector("#restService").innerHTML = '<img src="./images/icons/icons_service.svg" alt="service icon"/>Service: ' + k + "% &#128077;";
               card.querySelector("#restService").id = "restService" + index;
               
               const l = parseInt((element.language.up.length / (element.language.up.length + element.language.down.length) * 100));
-              card.querySelector("#restLanguage").innerHTML = "Little English Needed: " + l + "% &#128077;";
+              card.querySelector("#restLanguage").innerHTML = '<img src="./images/icons/icons_language.svg" alt="language icon"/>Little English Needed: ' + l + "% &#128077;";
               card.querySelector("#restLanguage").id = "restLanguage" + index;
               
               const recRevs = recentReviews(element);
-              card.querySelector("#restRecentReviews").innerHTML = "Recent Reviews: " + recRevs;
+              card.querySelector("#restRecentReviews").innerHTML = '<img src="./images/icons/icons_trending.svg" alt="recent reviews icon"/>Recent Reviews: ' + recRevs;
               card.querySelector("#restRecentReviews").id = "restRecentReviews" + index;
                 
               card.querySelector("#restWebsite").id = "restWebsite" + index;
