@@ -175,7 +175,7 @@ const recentReviews = rest => {
   else if (ratio >= 0) {
     ret = "(╯°Д°）╯︵/(.□ . )";
   } else {
-    ret = "¯\_(ツ)_/¯"
+    ret = "¯\\_(ツ)_/¯"
   }
   return ret;
 }
