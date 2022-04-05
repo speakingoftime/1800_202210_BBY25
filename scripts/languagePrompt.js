@@ -128,7 +128,7 @@ function translateToEng() {
   document.getElementById("foodLabel").innerText = "Food Quality";
   document.getElementById("valueLabel").innerText = "Value";
   document.getElementById("serviceLabel").innerText = "Service";
-  document.getElementById("languageLabel").innerText = "Little English needed";
+  document.getElementById("languageLabel").innerText = "Little English Needed";
   // Language prompt content
   document.getElementById("langBtn").innerHTML = document.getElementById("langBtn").innerHTML.replace('语言', 'Language');
   document.getElementById("offcanvasBottomLabel"). innerText = "Change language";

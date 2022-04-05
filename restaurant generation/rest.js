@@ -39,7 +39,7 @@ const populateRestaurants = () => {
   }
 
   const genReview = (upperbound) => {
-    const myRandom = upperbound ? Math.floor(Math.random() * 25 + 25) : Math.floor(Math.random() * 50)
+    const myRandom = upperbound ? Math.floor(Math.random() * 7 + 3) : Math.floor(Math.random() * 10)
     const ret = {};
     for (let i = 0; i < myRandom; i++) {
       ret[uuidv4()] = genTimestamps();
@@ -80,8 +80,8 @@ const populateRestaurants = () => {
         Math.floor(Math.random() * 9) +
         String.fromCharCode(Math.floor(Math.random() * 26) + 65) + 
         Math.floor(Math.random() * 9),
-      phoneNumber: "+1 604-555-" + (index < 10 ? "000" + index : "00" + index),
-      hours: "7 days a week " + openingHours[Math.floor(Math.random() * openingHours.length)] + " - " +
+      phoneNumber: "+1 (604) 555-" + (Math.floor(Math.random() * 9999)),
+      hours: "7 Days a Week " + openingHours[Math.floor(Math.random() * openingHours.length)] + " - " +
         closingHours[Math.floor(Math.random() * closingHours.length)],
       website: "www." + restName.replace(/'| /g, "").toLowerCase() + ".com",
       photoPrefix: photo[foodIndex]

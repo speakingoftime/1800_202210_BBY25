@@ -115,7 +115,7 @@ const populatePhotos = (photoPrefix) => {
 }
 
 const recentReviews = rest => {
-  const oneMonth = 155520000;
+  const oneMonth = 2628000000;
   const now = Date.now();
   const metrics = ["food", "value", "service", "language"];
   let recentUp = 0;
@@ -136,20 +136,20 @@ const recentReviews = rest => {
   }
   const ratio = parseInt((recentUp / (recentUp + recentDown)) * 100);
   let ret = "";
-  if (ratio >= 80) {
-    ret = "\n┣ﾍ(^▽^ﾍ)Ξ(ﾟ▽ﾟ*)ﾉ┳━┳";
+  if (ratio >= 65) {
+    ret = "┣ﾍ(^▽^ﾍ)Ξ(ﾟ▽ﾟ*)ﾉ┳━┳";
   }
-  else if (ratio >= 65) {
-    ret = "\n(´・(oo)・｀)";
+  else if (ratio >= 60) {
+    ret = "( ˘▽˘)っ♨";
   }
   else if (ratio >= 50) {
-    ret = "\n┬─┬ノ(ಠ_ಠノ)";
+    ret = "┬─┬ノ(ಠ_ಠノ)";
   }
-  else if (ratio >= 35) {
-    ret = "\n(ノಠ益ಠ)ノ彡┻━┻";
+  else if (ratio >= 40) {
+    ret = "(ノಠ益ಠ)ノ彡┻━┻";
   }
   else if (ratio >= 0) {
-    ret = "\n(╯°Д°）╯︵/(.□ . )";
+    ret = "(╯°Д°）╯︵/(.□ . )";
   } else {
     ret = "¯\\_(ツ)_/¯"
   }
@@ -303,6 +303,7 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
             console.log("submitted form");
           // End of else
           }
+          alert("Thank you for submitting a review!")
         // End of function
         });
 

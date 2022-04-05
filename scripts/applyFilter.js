@@ -140,7 +140,7 @@ db.collection("restaurants").get()
   });
 
 const recentReviews = rest => {
-  const oneMonth = 155520000;
+  const oneMonth = 2628000000;
   const now = Date.now();
   let recentUp = 0;
   let recentDown = 0;
@@ -160,16 +160,16 @@ const recentReviews = rest => {
   }
   const ratio = parseInt((recentUp / (recentUp + recentDown)) * 100);
   let ret = "";
-  if (ratio >= 80) {
+  if (ratio >= 65) {
     ret = "┣ﾍ(^▽^ﾍ)Ξ(ﾟ▽ﾟ*)ﾉ┳━┳";
   }
-  else if (ratio >= 65) {
-    ret = "(´・(oo)・｀)";
+  else if (ratio >= 60) {
+    ret = "( ˘▽˘)っ♨";
   }
   else if (ratio >= 50) {
     ret = "┬─┬ノ(ಠ_ಠノ)";
   }
-  else if (ratio >= 35) {
+  else if (ratio >= 40) {
     ret = "(ノಠ益ಠ)ノ彡┻━┻";
   }
   else if (ratio >= 0) {
