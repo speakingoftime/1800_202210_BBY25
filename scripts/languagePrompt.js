@@ -113,7 +113,7 @@ function translateToEng() {
   // Nav
   document.getElementById("home-btn").innerText = "Home";
   document.getElementById("search-btn").innerText = "Search";
-  document.getElementById("saved-btn").innerText = "Saved list";
+  document.getElementById("saved-btn").innerText = "Saved List";
   document.getElementById("login-btn").innerText = "Log in";
   // Hero text
   document.querySelector("h1").innerText = "Welcome to Vancouver";
