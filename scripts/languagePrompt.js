@@ -12,7 +12,10 @@ if (localStorage.getItem("Prompted") === null) {
     if (user) {
       // Check if there's a "Language" field in user's profile
       let docRef = db.collection("users").doc(user.uid);
+      
       docRef.get().then(snapshot => {
+        let userName = snapshot.data().name;
+        document.getElementById("user-name-here").innerHTML = ", <br/>" + userName;
         if (snapshot.data().language) {
           console.log("User has a language setting");
             if (snapshot.data().language === "Cn") {
