@@ -51,19 +51,19 @@ db.collection("restaurants").get()
     }
 
     const valueFilter = (currRest) => {
-      return currRest.value.up.length + currRest.value.down.length * -1 > 0;
+      return Object.values(currRest.value.up).length + Object.values(currRest.value.down).length * -1 > 0;
     }
 
     const foodFilter = (currRest) => {
-      return currRest.food.up.length + currRest.food.down.length * -1 > 0;
+      return Object.values(currRest.food.up).length + Object.values(currRest.food.down).length * -1 > 0;
     }
 
     const serviceFilter = (currRest) => {
-      return currRest.service.up.length + currRest.service.down.length * -1 > 0;
+      return Object.values(currRest.service.up).length + Object.values(currRest.service.down).length * -1 > 0;
     }
 
     const languageFilter = (currRest) => {
-      return currRest.language.up.length + currRest.language.down.length * -1 > 0;
+      return Object.values(currRest.language.up).length + Object.values(currRest.language.down).length * -1 > 0;
     }
 
     // Apply Filters
