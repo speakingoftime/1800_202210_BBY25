@@ -140,7 +140,6 @@ button {
   transition: box-shadow 0.2s ease-in-out;
 }
 .card:hover {
-  /* outline: #1E2859 inset 2px; */
   box-shadow: 0px 8px 16px rgba(30, 40, 89, 0.2);
 }
 .card li {
@@ -153,7 +152,6 @@ button {
 }
 
 #btn-check-outlined {
-  /* background-color: white; */
   position: absolute;
   top: 0;
   right: 0;
@@ -195,7 +193,7 @@ button {
 }
 #rest-name-wrapper {
   position: relative;
-  height: 10vh;
+  min-height: 6em;
   background-color: #EBF7FA;
 }
 #restaurant-page-container h1 {
@@ -230,4 +228,28 @@ button {
 
 #reviewForm {
   display: none;
+}
+
+/********** Save button styling **********/
+button.saved.active{
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+button.saved.active span {
+  color: white;
+}
+
+button.saved {
+  background-color: white;
+  border-color: #dc3545;
+  width: 3.6em;
+  height: 3.6em;
+}
+button.saved span {
+  color: #dc3545;
+  transition: color 0.1s ease-in-out;
+  font-size: 2em;
+}
+button.saved:hover span {
+  color: white;
 }
