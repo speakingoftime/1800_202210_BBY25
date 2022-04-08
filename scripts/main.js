@@ -1,3 +1,5 @@
+// Checks if user is logged in
+// If not, they will be prompted to log in
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     let savedList = db.collection("users").doc(user.uid);
@@ -5,10 +7,9 @@ firebase.auth().onAuthStateChanged((user) => {
     savedList.get().then((doc) => {
       if (doc.exists) {
         // Add name to welcome page
-        let userName = doc.data().name;
-        document.getElementById("user-name-here").innerText = userName;
+        document.getElementById("user-name-here").innerText = doc.data().name;;
 
-        // Display language
+        // Changes the page language depending on the user's choice
         document.getElementById("langEng").addEventListener("click", function() {
           localStorage.setItem("Language", "Eng");
           savedList.update({"language": localStorage.getItem("Language")});
@@ -19,9 +20,8 @@ firebase.auth().onAuthStateChanged((user) => {
           savedList.update({"language": localStorage.getItem("Language")});
           translateToCn();
         });
-        
 
-        // Display the cards
+        // Dynamically create and display the Saved Restaurants cards
         let currentData = doc.data().restaurants;
         let savedCardTemplate = document.getElementById("savedCardTemplate");
         let savedListCard = document.getElementById("saved-list-placeholder");
@@ -30,8 +30,8 @@ firebase.auth().onAuthStateChanged((user) => {
             const savedCard = savedCardTemplate.content.cloneNode(true);
             let name = savedCard.querySelector(".card-title").innerText = element;
             savedCard.querySelector("a").setAttribute("href", "./restaurant.html?" + element);
-            let saveBtn = savedCard.getElementById("btn-check-outlined");
-            let count = 1;
+            
+            // Gets the images for the restaurant
             const tempImg = savedCard.getElementById("restImg");
             tempImg.id = "restImg" + index;
             db.collection("restaurants").where("name", "==", element).limit(1).get()
@@ -47,6 +47,7 @@ firebase.auth().onAuthStateChanged((user) => {
               })
 
             // Determine save button functions
+            let saveBtn = savedCard.getElementById("btn-check-outlined");
             saveBtn.addEventListener("click", function() {
               localStorage.setItem("restaurant name", name);
               let restName = localStorage.getItem("restaurant name");
@@ -54,7 +55,8 @@ firebase.auth().onAuthStateChanged((user) => {
               let filterData = currentData.filter(function(result) {
                 return result != restName; // Returns a new array
               });
-              if (count == 1) {
+              // Removes restaurant from Saved if it's already on the list
+              if (saveBtn.classList.contains("active")) {
                 console.log("Removed");
                 saveBtn.classList.remove("active");
                 saveBtn.querySelector(".saveIcon").innerText = "favorite_border";
@@ -62,9 +64,9 @@ firebase.auth().onAuthStateChanged((user) => {
                 savedList.update({
                   restaurants: filterData
                 });
-                count--;
               }
-              else if (count == 0) {
+              else {
+                // Adds restaurant to Saved if not already on it
                 console.log("Saved");
                 saveBtn.classList.add("active");
                 saveBtn.querySelector(".saveIcon").innerText = "favorite";
@@ -73,16 +75,14 @@ firebase.auth().onAuthStateChanged((user) => {
                 savedList.update({
                   restaurants: newData
                 });
-                count++;
               }
             })
             savedListCard.appendChild(savedCard);
           })
         } else {
           const emptyList = document.createElement("p");
-          let message = emptyList.innerText = "Nothing to see here!"
+          emptyList.innerText = "Nothing to see here!";
           savedListCard.appendChild(emptyList);
-          console.log(message);
         }
       } else {
         // doc.data() will be undefined
