@@ -65,7 +65,7 @@ db.collection("restaurants").get()
 
     // website
     const link = document.createElement("a");
-    link.setAttribute("href", restPageRatings.website); 
+    link.setAttribute("href", restPageRatings.website);
     link.innerHTML = restPageRatings.website;
     const website = document.getElementById("rest-website-placeholder");
     website.removeChild(website.lastChild);
@@ -91,26 +91,26 @@ const populatePhotos = (photoPrefix) => {
   const carousel = document.querySelector(".carousel-inner");
   const numPhotos = 5;
   const storageRef = firebase.storage().ref();
-  
-  // Restaurants currently have exactly 5 photos
-  for(let i = 1; i <= numPhotos; i++) {    
-    storageRef.child(`/imgs/${photoPrefix}_0${i}.jpeg`).getDownloadURL()
-    .then(url => {
-      // Create carousel item div
-      const tempDiv = document.createElement("div");
-      tempDiv.classList.add("carousel-item");
-      if (i == 1) {
-        tempDiv.classList.add("active");
-      }
-      carousel.appendChild(tempDiv);
 
-      // Create img tag
-      const tempImg = document.createElement("img");
-      tempImg.classList.add("rest-img-placeholder");
-      tempImg.alt = "...";
-      tempImg.src = url;
-      tempDiv.appendChild(tempImg);
-    })
+  // Restaurants currently have exactly 5 photos
+  for (let i = 1; i <= numPhotos; i++) {
+    storageRef.child(`/imgs/${photoPrefix}_0${i}.jpeg`).getDownloadURL()
+      .then(url => {
+        // Create carousel item div
+        const tempDiv = document.createElement("div");
+        tempDiv.classList.add("carousel-item");
+        if (i == 1) {
+          tempDiv.classList.add("active");
+        }
+        carousel.appendChild(tempDiv);
+
+        // Create img tag
+        const tempImg = document.createElement("img");
+        tempImg.classList.add("rest-img-placeholder");
+        tempImg.alt = "...";
+        tempImg.src = url;
+        tempDiv.appendChild(tempImg);
+      })
   }
 }
 
@@ -159,7 +159,7 @@ const recentReviews = rest => {
 }
 
 // Submit Review
-$("#reviewForm").submit(function(e) {
+$("#reviewForm").submit(function (e) {
   e.preventDefault();
 });
 
@@ -174,11 +174,11 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
       let reviewButton = document.getElementById("reviewButton");
 
       if (user) {
-        var userUID = user.uid; 
+        var userUID = user.uid;
         console.log("user uid: " + userUID);
-        
+
         // User logged in already or has just logged in.
-        reviewButton.addEventListener("click", function() {
+        reviewButton.addEventListener("click", function () {
           var x = document.getElementById("reviewForm");
           if (x.style.display === "none" || x.style.display === "") {
             x.style.display = "block";
@@ -187,131 +187,68 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
           }
         });
 
-        $("#reviewForm").submit(function() {
+        $("#reviewForm").submit(function () {
 
+          // Finds which button is clicked.
           const foodButton = ($('input[name=food]:checked').val())
           const valueButton = ($('input[name=value]:checked').val())
           const serviceButton = ($('input[name=service]:checked').val())
           const languageButton = ($('input[name=language]:checked').val())
-        
-          if (foodButton == null || 
-              valueButton == null || 
-              serviceButton == null || 
-              languageButton == null) {
-              
-          alert("Please select all buttons!"); 
-        
+
+          // Check to see if buttons are clicked.
+          if (foodButton == null ||
+            valueButton == null ||
+            serviceButton == null ||
+            languageButton == null) {
+
+            alert("Please select all buttons!");
+
           } else {
 
-          db.collection("restaurants").doc(docID).update({
-            [`food.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
-            [`food.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
-            [`value.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
-            [`value.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
-            [`service.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
-            [`service.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
-            [`language.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
-            [`language.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
-          });
+            // Delete field if exists.
+            db.collection("restaurants").doc(docID).update({
+              [`food.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
+              [`food.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
+              [`value.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
+              [`value.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
+              [`service.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
+              [`service.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
+              [`language.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
+              [`language.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
+            });
 
-            if (foodButton == "up") {
-              db.collection("restaurants").doc(docID).set({
-                food: {
-                  up: {
-                    [userUID]: Date.now()
-                  }
+            // Sends the user UID as a key and the current date as the value.
+            db.collection("restaurants").doc(docID).set({
+              food: {
+                [foodButton]: {
+                  [user.uid]: Date.now()
                 }
-              }, {
-                merge: true
-              })
-            }
-            if (foodButton == "down") {
-              db.collection("restaurants").doc(docID).set({
-                food: {
-                  down: {
-                    [userUID]: Date.now()
-                  }
+              },
+              value: {
+                [valueButton]: {
+                  [user.uid]: Date.now()
                 }
-              }, {
-                merge: true
-              })
-            }
-            if (valueButton == "up") {
-              db.collection("restaurants").doc(docID).set({
-                value: {
-                  up: {
-                    [userUID]: Date.now()
-                  }
+              },
+              service: {
+                [serviceButton]: {
+                  [user.uid]: Date.now()
                 }
-              }, {
-                merge: true
-              })
-            }
-            if (valueButton == "down") {
-              db.collection("restaurants").doc(docID).set({
-                value: {
-                  down: {
-                    [userUID]: Date.now()
-                  }
+              },
+              language: {
+                [languageButton]: {
+                  [user.uid]: Date.now()
                 }
-              }, {
-                merge: true
-              })
-            }
-            if (serviceButton == "up") {
-              db.collection("restaurants").doc(docID).set({
-                service: {
-                  up: {
-                    [userUID]: Date.now()
-                  }
-                }
-              }, {
-                merge: true
-              })
-            }
-            if (serviceButton == "down") {
-              db.collection("restaurants").doc(docID).set({
-                service: {
-                  down: {
-                    [userUID]: Date.now()
-                  }
-                }
-              }, {
-                merge: true
-              })
-            }
-            if (languageButton == "up") {
-              db.collection("restaurants").doc(docID).set({
-                language: {
-                  up: {
-                    [userUID]: Date.now()
-                  }
-                }
-              }, {
-                merge: true
-              })
-            }
-            if (languageButton == "down") {
-              db.collection("restaurants").doc(docID).set({
-                language: {
-                  down: {
-                    [userUID]: Date.now()
-                  }
-                }
-              }, {
-                merge: true
-              })
-            }
-            console.log("submitted form");
-          // End of else
+              }
+            }, {
+              merge: true
+            })
           }
           alert("Thank you for submitting a review!")
-        // End of function
+          // End of function
         });
-
       } else {
         // User not logged in or has just logged out.
-        reviewButton.addEventListener("click", function() {
+        reviewButton.addEventListener("click", function () {
           // Load modal prompting user to log in
           let loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
           loginModal.toggle(loginModal);

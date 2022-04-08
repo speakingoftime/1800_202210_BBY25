@@ -1,78 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8"/>
-  <title>Log in | FoodFinderVancouver</title>
-  <meta name="comp1800 boilerplate code" content="my bcit project"/>
-  <meta name="author" content="BCIT"/>
+  <head>
+    <meta charset="utf-8" />
+    <title>Log in | FoodFinderVancouver</title>
+    <meta name="comp1800 boilerplate code"
+          content="my bcit project" />
+    <meta name="author"
+          content="BCIT" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1" />
 
-  <!-- Bootstrap Library CSS CDN go here -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <!-- Bootstrap Library CSS CDN go here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous" />
 
-  <!-- Google Material Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet" />
 
-  <!-- JQuery Script - Google CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <!-- JQuery Script - Google CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <!-- Our custom css -->
-  <link rel="stylesheet" href="./styles/style.css"/>
-</head>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css"
+          rel="stylesheet"
+          href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
-<body>
-  <!-- NAVBAR -->
-  <div class="pos-f-t">
-    <nav class="navbar navbar-light bg-light" id="navHeader">
-      <a href="./index.html" class="mx-3">
-        <img id="logo" src="./images/logo.svg" alt="Food Finder Vancouver"/>
-      </a>
-      <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </nav>
-    <div class="collapse" id="navbarToggleExternalContent">
-      <div class="nav navbar-dark d-grid text-center p-3" style="background: #8bba40;" id="navbar-list">
-        <a class="nav-link text-white" href="./index.html" id="home-btn">Home</a>
-        <a class="nav-link text-white" href="./search.html" id="search-btn">Search</a>
-        <a class="nav-link text-white" href="./main.html" id="saved-btn">Saved List</a>
-        <a class="nav-link text-white" href="./login.html" id="login-btn">Log in</a>
+    <!-- Our custom css -->
+    <link rel="stylesheet"
+          href="./styles/style.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <div class="pos-f-t">
+      <nav class="navbar navbar-light bg-light"
+           id="navHeader">
+        <a href="./index.html"
+           class="mx-3">
+          <img id="logo"
+               src="./images/logo.svg"
+               alt="Food Finder Vancouver" />
+        </a>
+        <button class="navbar-toggler me-3"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent"
+                aria-controls="navbarToggleExternalContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+      <div class="collapse"
+           id="navbarToggleExternalContent">
+        <div class="nav navbar-dark d-grid text-center p-3"
+             style="background: #8bba40;"
+             id="navbar-list">
+          <a class="nav-link text-white"
+             href="./index.html"
+             id="home-btn">Home</a>
+          <a class="nav-link text-white"
+             href="./search.html"
+             id="search-btn">Search</a>
+          <a class="nav-link text-white"
+             href="./main.html"
+             id="saved-btn">Saved List</a>
+          <a class="nav-link text-white"
+             href="./login.html"
+             id="login-btn">Log in</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Login -->
-  <div class="container text-center my-5 px-2">
-    <h1 class="display-5 fw-bold mb-4" id="loginHeading">Log in</h1>
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
-  </div>
+    <!-- Login -->
+    <div class="container text-center my-5 px-2">
+      <h1 class="display-5 fw-bold mb-4"
+          id="loginHeading">Log in</h1>
+      <div id="firebaseui-auth-container"></div>
+      <div id="loader">Loading...</div>
+    </div>
 
-  <!-- Footer -->
-  <div class="fixed-bottom footer-copyright text-center text-black-50 py-3">©2022 FoodFinderVancouver.
-  </div>
+    <!-- Footer -->
+    <div class="fixed-bottom footer-copyright text-center text-black-50 py-3">©2022
+      FoodFinderVancouver.
+    </div>
 
-  <!-- Boostrap Library JS CDN  go here -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+    <!-- Boostrap Library JS CDN  go here -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
 
-  <!-- Our JS -->
-  <script src="./scripts/firebaseInit.js"></script>
-  <script src="./scripts/authentication.js"></script>
-  <script src="./scripts/translate.js"></script>
-</body>
+    <!-- Our JS -->
+    <script src="./scripts/firebaseInit.js"></script>
+    <script src="./scripts/authentication.js"></script>
+    <script src="./scripts/translate.js"></script>
+  </body>
 
 </html>

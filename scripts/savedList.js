@@ -6,7 +6,7 @@ function toggleSaveBtn() {
     console.log("Saved");
     saveBtn.classList.add("active");
     saveBtn.querySelector(".saveIcon").innerText = "favorite";
-  }  
+  }
   else {
     console.log("Removed");
     saveBtn.classList.remove("active");
@@ -35,12 +35,12 @@ firebase.auth().onAuthStateChanged((user) => {
           saveBtn.classList.add("active");
           saveBtn.querySelector(".saveIcon").innerText = "favorite";
         }
-        
+
         // Add restaurant to user's saved list on click of button
-        saveBtn.addEventListener("click", function() {
+        saveBtn.addEventListener("click", function () {
           toggleSaveBtn();
           // Filter restaurant name stored in localStorage from the user's saved restaurants
-          let filterData = currentData.filter(function(result) {
+          let filterData = currentData.filter(function (result) {
             return result != restName; // Returns a new array
           });
           if (!saveBtn.classList.contains("active")) {
@@ -64,9 +64,10 @@ firebase.auth().onAuthStateChanged((user) => {
   } else {
     // User is signed out
     console.log("Not logged in");
-    saveBtn.addEventListener("click", function() {
+    saveBtn.addEventListener("click", function () {
       // Load modal prompting user to log in
       let loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
       loginModal.toggle(loginModal);
-  })};
+    })
+  };
 });

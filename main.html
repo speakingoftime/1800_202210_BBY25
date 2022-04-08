@@ -1,151 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8"/>
-  <title>Saved List | FoodFinderVancouver</title>
-  <meta name="comp1800 boilerplate code" content="my bcit project"/>
-  <meta name="author" content="BCIT"/>
+  <head>
+    <meta charset="utf-8" />
+    <title>Saved List | FoodFinderVancouver</title>
+    <meta name="comp1800 boilerplate code"
+          content="my bcit project" />
+    <meta name="author"
+          content="BCIT" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1" />
 
-  <!-- Bootstrap Library CSS CDN go here -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <!-- Bootstrap Library CSS CDN go here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous" />
 
-  <!-- Google Material Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet" />
 
-  <!-- JQuery Script - Google CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <!-- JQuery Script - Google CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <!-- Our custom css -->
-  <link rel="stylesheet" href="./styles/style.css"/>
-</head>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <link type="text/css"
+          rel="stylesheet"
+          href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
-<body>
-  <!-- NAVBAR -->
-  <div class="pos-f-t">
-    <nav class="navbar navbar-light bg-light" id="navHeader">
-      <a href="./index.html" class="mx-3">
-        <img id="logo" src="./images/logo.svg" alt="Food Finder Vancouver"/>
-      </a>
-      <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </nav>
-    <div class="collapse" id="navbarToggleExternalContent">
-      <div class="nav navbar-dark d-grid text-center p-3" style="background: #8bba40;" id="navbar-list">
-        <a class="nav-link text-white" href="./index.html" id="home-btn">Home</a>
-        <a class="nav-link text-white" href="./search.html" id="search-btn">Search</a>
-        <a class="nav-link text-white" href="./main.html" id="saved-btn">Saved List</a>
-        <a class="nav-link text-white" href="./login.html" id="login-btn">Log in</a>
+    <!-- Our custom css -->
+    <link rel="stylesheet"
+          href="./styles/style.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <div class="pos-f-t">
+      <nav class="navbar navbar-light bg-light"
+           id="navHeader">
+        <a href="./index.html"
+           class="mx-3">
+          <img id="logo"
+               src="./images/logo.svg"
+               alt="Food Finder Vancouver" />
+        </a>
+        <button class="navbar-toggler me-3"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent"
+                aria-controls="navbarToggleExternalContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+      <div class="collapse"
+           id="navbarToggleExternalContent">
+        <div class="nav navbar-dark d-grid text-center p-3"
+             style="background: #8bba40;"
+             id="navbar-list">
+          <a class="nav-link text-white"
+             href="./index.html"
+             id="home-btn">Home</a>
+          <a class="nav-link text-white"
+             href="./search.html"
+             id="search-btn">Search</a>
+          <a class="nav-link text-white"
+             href="./main.html"
+             id="saved-btn">Saved List</a>
+          <a class="nav-link text-white"
+             href="./login.html"
+             id="login-btn">Log in</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Main page -->
-  <!-- Hero banner with customized greeting -->
-  <div class="px-5 pt-5 pb-4 text-center hero" id="heroMain">
-    <h1 class="display-5 fw-bold">
-      <span id="welcomeMsg">Welcome</span>, 
-      <br/>
-      <span id="user-name-here"></span>
-    </h1>
-  </div>
-  <!-- Body contents -->
-  <div class="container px-2 py-4 text-center">
-    <div class="container">
-      <!-- Tabs to toggle between Saved List and Language -->
-      <ul class="nav nav-justified nav-pills bg-light" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link  d-flex flex-fill mx-auto align-self-center active " id="pills-saves-tab" data-bs-toggle="pill" data-bs-target="#pills-saves" type="button" role="tab" aria-controls="pills-saves" aria-selected="true">
-            <span class="material-icons me-1">favorite_border</span>
-            Your Saved List</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link d-flex flex-fill mx-auto align-self-center" id="pills-language-tab" data-bs-toggle="pill" data-bs-target="#pills-language" type="button" role="tab" aria-controls="pills-language" aria-selected="false">
-            <span class="material-icons me-1">language</span>Your Language</button>
-        </li>
-      </ul>
-      <!-- Contents of the toggled sections -->
-      <div class="tab-content" id="pills-tabContent">
-        <!-- Saved restaurants section -->
-        <div class="tab-pane fade show active" id="pills-saves" role="tabpanel" aria-labelledby="pills-saves-tab">
-          <div class="mt-5" id="saved-list-placeholder"></div>
-        </div>
-        <!-- Language section -->
-        <div class="tab-pane fade" id="pills-language" role="tabpanel" aria-labelledby="pills-language-tab">
-          <div id="langOptions" class="d-md-flex justify-content-md-end mt-5">
-            <h3 id="langOptionsHeading">Change language:</h3>
-            <div id="changeLangBtns" class="d-grid gap-2 mt-4">
-              <button class="btn btn-outline-primary" type="button" id="langEng">English</button>
-              <button class="btn btn-outline-primary" type="button" id="langCn">中文</button>
+    <!-- Main page -->
+    <!-- Hero banner with customized greeting -->
+    <div class="px-5 pt-5 pb-4 text-center hero"
+         id="heroMain">
+      <h1 class="display-5 fw-bold">
+        <span id="welcomeMsg">Welcome</span>,
+        <br />
+        <span id="user-name-here"></span>
+      </h1>
+    </div>
+    <!-- Body contents -->
+    <div class="container px-2 py-4 text-center">
+      <div class="container">
+        <!-- Tabs to toggle between Saved List and Language -->
+        <ul class="nav nav-justified nav-pills bg-light"
+            id="pills-tab"
+            role="tablist">
+          <li class="nav-item"
+              role="presentation">
+            <button class="nav-link  d-flex flex-fill mx-auto align-self-center active "
+                    id="pills-saves-tab"
+                    data-bs-toggle="pill"
+                    data-bs-target="#pills-saves"
+                    type="button"
+                    role="tab"
+                    aria-controls="pills-saves"
+                    aria-selected="true">
+              <span class="material-icons me-1">favorite_border</span>
+              Your Saved List</button>
+          </li>
+          <li class="nav-item"
+              role="presentation">
+            <button class="nav-link d-flex flex-fill mx-auto align-self-center"
+                    id="pills-language-tab"
+                    data-bs-toggle="pill"
+                    data-bs-target="#pills-language"
+                    type="button"
+                    role="tab"
+                    aria-controls="pills-language"
+                    aria-selected="false">
+              <span class="material-icons me-1">language</span>Your Language</button>
+          </li>
+        </ul>
+        <!-- Contents of the toggled sections -->
+        <div class="tab-content"
+             id="pills-tabContent">
+          <!-- Saved restaurants section -->
+          <div class="tab-pane fade show active"
+               id="pills-saves"
+               role="tabpanel"
+               aria-labelledby="pills-saves-tab">
+            <div class="mt-5"
+                 id="saved-list-placeholder"></div>
+          </div>
+          <!-- Language section -->
+          <div class="tab-pane fade"
+               id="pills-language"
+               role="tabpanel"
+               aria-labelledby="pills-language-tab">
+            <div id="langOptions"
+                 class="d-md-flex justify-content-md-end mt-5">
+              <h3 id="langOptionsHeading">Change language:</h3>
+              <div id="changeLangBtns"
+                   class="d-grid gap-2 mt-4">
+                <button class="btn btn-outline-primary"
+                        type="button"
+                        id="langEng">English</button>
+                <button class="btn btn-outline-primary"
+                        type="button"
+                        id="langCn">中文</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Modal to prompt user to login to view this page -->
-  <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">Hello!</h5>
-        </div>
-        <div class="modal-body border-top-0">
-          <p id="loginModalMsg">Please log in</p>
-        </div>
-        <div class="modal-footer border-top-0">
-          <a href="#" role="button" class="btn btn-outline-secondary" onclick="history.back()" id="modalClose">No, thanks</a>
-          <a href="./login.html" role="button" class="btn btn-primary" id="loginModalBtn">Log in</a>
+    <!-- Modal to prompt user to login to view this page -->
+    <div class="modal fade"
+         id="loginModal"
+         data-bs-backdrop="static"
+         data-bs-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="loginModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"
+                id="loginModalLabel">Hello!</h5>
+          </div>
+          <div class="modal-body border-top-0">
+            <p id="loginModalMsg">Please log in</p>
+          </div>
+          <div class="modal-footer border-top-0">
+            <a href="#"
+               role="button"
+               class="btn btn-outline-secondary"
+               onclick="history.back()"
+               id="modalClose">No, thanks</a>
+            <a href="./login.html"
+               role="button"
+               class="btn btn-primary"
+               id="loginModalBtn">Log in</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Template to generate the cards for the bookmarked restaurants -->
-  <template id="savedCardTemplate">
-    <div class="card w-100 mt-2 mb-4 text-center" style="width: 18rem;">
-      <a href="./restaurant.html">
-        <img src="https://dummyimage.com/285x180/757575/000000" class="card-img-top" alt="restaurant logo" id="restImg">
-      </a>
-      <div class="card-body">
-        <h5 class="card-title">Restaurant Name</h5>
+    <!-- Template to generate the cards for the bookmarked restaurants -->
+    <template id="savedCardTemplate">
+      <div class="card w-100 mt-2 mb-4 text-center"
+           style="width: 18rem;">
+        <a href="./restaurant.html">
+          <img src="https://dummyimage.com/285x180/757575/000000"
+               class="card-img-top"
+               alt="restaurant logo"
+               id="restImg">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">Restaurant Name</h5>
+        </div>
+        <!-- Save restaurant icon -->
+        <button type="button"
+                class="btn btn-outline-danger active saved"
+                id="btn-check-outlined">
+          <span class="saveIcon material-icons pt-2">favorite</span>
+        </button>
       </div>
-      <!-- Save restaurant icon -->
-      <button type="button" class="btn btn-outline-danger active saved" id="btn-check-outlined">
-        <span class="saveIcon material-icons pt-2">favorite</span>
-      </button>
+    </template>
+
+    <!-- Footer -->
+    <div class="footer-copyright text-center text-black-50 py-3">©2022 FoodFinderVancouver.
     </div>
-  </template>
 
-  <!-- Footer -->
-  <div class="footer-copyright text-center text-black-50 py-3">©2022 FoodFinderVancouver.
-  </div>
+    <!-- Boostrap Library JS CDN  go here -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
 
-  <!-- Boostrap Library JS CDN  go here -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-
-  <!-- Our JS -->
-  <script src="./scripts/firebaseInit.js"></script>
-  <script src="./scripts/main.js"></script>
-  <script src="./scripts/updateNav.js"></script>
-  <script src="./scripts/translate.js"></script>
-</body>
+    <!-- Our JS -->
+    <script src="./scripts/firebaseInit.js"></script>
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/updateNav.js"></script>
+    <script src="./scripts/translate.js"></script>
+  </body>
 
 </html>

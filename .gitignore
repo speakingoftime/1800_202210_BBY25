@@ -1,3 +1,9 @@
 .DS_Store
 *.logs
 node_modules/
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules
+storage.rules
+.firebase/hosting..cache

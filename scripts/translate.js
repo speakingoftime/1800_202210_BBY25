@@ -59,7 +59,6 @@ function translateToCn() {
   }
 }
 
-///////////////////////////////////////////////////
 function translateToCnSearch() {
   // Search bar
   document.getElementById("searchBar").setAttribute("placeholder", "搜索");
@@ -135,10 +134,10 @@ function translateToCnRestaurant() {
   document.getElementById("ratings").innerHTML = document.getElementById("ratings").innerHTML.replace('Ratings', '评分');
   let ratings = document.getElementById("rest-ratings-content");
   ratings.innerHTML = ratings.innerHTML.replace("Food Quality:", "食物品质 :");
-  ratings.innerHTML= ratings.innerHTML.replace("Value:", "食物价值 :");
-  ratings.innerHTML= ratings.innerHTML.replace("Service:", "快速服务 :");
-  ratings.innerHTML= ratings.innerHTML.replace("Little English Needed:", "不需要英文帮助 :");
-  ratings.innerHTML= ratings.innerHTML.replace("Recent Reviews:", "最新评论 :");
+  ratings.innerHTML = ratings.innerHTML.replace("Value:", "食物价值 :");
+  ratings.innerHTML = ratings.innerHTML.replace("Service:", "快速服务 :");
+  ratings.innerHTML = ratings.innerHTML.replace("Little English Needed:", "不需要英文帮助 :");
+  ratings.innerHTML = ratings.innerHTML.replace("Recent Reviews:", "最新评论 :");
 }
 
 function translateToCnReviewForm() {
@@ -154,18 +153,15 @@ function translateToCnReviewForm() {
 
 function translateToCnLoginModal() {
   document.getElementById("loginModalLabel").innerText = "你好！";
-    document.getElementById("loginModalMsg").innerText = "请登录";
-    document.getElementById("modalClose").innerText = "不用了，谢谢";
-    document.getElementById("loginModalBtn").innerText = "登陆";
+  document.getElementById("loginModalMsg").innerText = "请登录";
+  document.getElementById("modalClose").innerText = "不用了，谢谢";
+  document.getElementById("loginModalBtn").innerText = "登陆";
 }
 
 function translateToCnLoginPg() {
   document.getElementById("loginHeading").innerText = "登陆注册";
   document.getElementById("loader").innerText = "加载中...";
 }
-///////////////////////////////////////////////////
-///////////////////////////////////////////////////
-
 
 ///////////////////////////////////////////////////
 // Translate back to English in sections
@@ -209,7 +205,6 @@ function translateToEng() {
 
 }
 
-///////////////////////////////////////////////////
 function translateToEngSearch() {
   // Search bar
   document.getElementById("searchBar").setAttribute("placeholder", "Search");
@@ -270,7 +265,7 @@ function translateToEngMetrics() {
 }
 
 function translateToEngSaved() {
-document.getElementById("welcomeMsg").innerText = "Welcome";
+  document.getElementById("welcomeMsg").innerText = "Welcome";
   document.getElementById("pills-saves-tab").innerHTML = document.getElementById("pills-saves-tab").innerHTML.replace('你保存的餐厅', 'Your Saved List');
   document.getElementById("pills-language-tab").innerHTML = document.getElementById("pills-language-tab").innerHTML.replace('你的语言', 'Your Language');
   document.getElementById("langOptionsHeading").innerText = "Change language:";
@@ -287,10 +282,10 @@ function translateToEngRestaurant() {
 
   let ratings = document.getElementById("rest-ratings-content");
   ratings.innerHTML = ratings.innerHTML.replace("食物品质 :", "Food Quality:");
-  ratings.innerHTML= ratings.innerHTML.replace("食物价值 :", "Value:");
-  ratings.innerHTML= ratings.innerHTML.replace("快速服务 :", "Service:");
-  ratings.innerHTML= ratings.innerHTML.replace("不需要英文帮助 :", "Little English Needed:");
-  ratings.innerHTML= ratings.innerHTML.replace("最新评论 :", "Recent Reviews:");
+  ratings.innerHTML = ratings.innerHTML.replace("食物价值 :", "Value:");
+  ratings.innerHTML = ratings.innerHTML.replace("快速服务 :", "Service:");
+  ratings.innerHTML = ratings.innerHTML.replace("不需要英文帮助 :", "Little English Needed:");
+  ratings.innerHTML = ratings.innerHTML.replace("最新评论 :", "Recent Reviews:");
 }
 
 function translateToEngReviewForm() {
@@ -315,5 +310,3 @@ function translateToEngLoginPg() {
   document.getElementById("loginHeading").innerText = "Log in";
   document.getElementById("loader").innerText = "Loading...";
 }
-///////////////////////////////////////////////////
-///////////////////////////////////////////////////
