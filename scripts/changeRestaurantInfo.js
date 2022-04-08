@@ -114,6 +114,8 @@ const populatePhotos = (photoPrefix) => {
   }
 }
 
+// Calculates Recent Reviews
+// Displays emoticons to match the average
 const recentReviews = rest => {
   const oneMonth = 2628000000;
   const now = Date.now();
