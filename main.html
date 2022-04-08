@@ -55,6 +55,7 @@
   </div>
 
   <!-- Main page -->
+  <!-- Hero banner with customized greeting -->
   <div class="px-5 pt-5 pb-4 text-center hero" id="heroMain">
     <h1 class="display-5 fw-bold">
       <span id="welcomeMsg">Welcome</span>, 
@@ -62,6 +63,7 @@
       <span id="user-name-here"></span>
     </h1>
   </div>
+  <!-- Body contents -->
   <div class="container px-2 py-4 text-center">
     <div class="container">
       <!-- Tabs to toggle between Saved List and Language -->
@@ -73,26 +75,22 @@
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link d-flex flex-fill mx-auto align-self-center" id="pills-language-tab" data-bs-toggle="pill" data-bs-target="#pills-language" type="button" role="tab" aria-controls="pills-language" aria-selected="false">
-            <span class="material-icons me-1">language</span>
-            Your Language
-          </button>
+            <span class="material-icons me-1">language</span>Your Language</button>
         </li>
       </ul>
+      <!-- Contents of the toggled sections -->
       <div class="tab-content" id="pills-tabContent">
+        <!-- Saved restaurants section -->
         <div class="tab-pane fade show active" id="pills-saves" role="tabpanel" aria-labelledby="pills-saves-tab">
-          <!-- Saved restaurants container -->
           <div class="mt-5" id="saved-list-placeholder"></div>
         </div>
+        <!-- Language section -->
         <div class="tab-pane fade" id="pills-language" role="tabpanel" aria-labelledby="pills-language-tab">
           <div id="langOptions" class="d-md-flex justify-content-md-end mt-5">
             <h3 id="langOptionsHeading">Change language:</h3>
             <div id="changeLangBtns" class="d-grid gap-2 mt-4">
-              <button class="btn btn-outline-primary" type="button" id="langEng">
-                English
-              </button>
-              <button class="btn btn-outline-primary" type="button" id="langCn">
-                中文
-              </button>
+              <button class="btn btn-outline-primary" type="button" id="langEng">English</button>
+              <button class="btn btn-outline-primary" type="button" id="langCn">中文</button>
             </div>
           </div>
         </div>
@@ -100,13 +98,12 @@
     </div>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal to prompt user to login to view this page -->
   <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="loginModalLabel">Hello!</h5>
-          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
         <div class="modal-body border-top-0">
           <p id="loginModalMsg">Please log in</p>
@@ -119,6 +116,7 @@
     </div>
   </div>
 
+  <!-- Template to generate the cards for the bookmarked restaurants -->
   <template id="savedCardTemplate">
     <div class="card w-100 mt-2 mb-4 text-center" style="width: 18rem;">
       <a href="./restaurant.html">
