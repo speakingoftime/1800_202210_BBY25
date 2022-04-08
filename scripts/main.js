@@ -10,14 +10,14 @@ firebase.auth().onAuthStateChanged((user) => {
         document.getElementById("user-name-here").innerText = doc.data().name;;
 
         // Changes the page language depending on the user's choice
-        document.getElementById("langEng").addEventListener("click", function() {
+        document.getElementById("langEng").addEventListener("click", function () {
           localStorage.setItem("Language", "Eng");
-          savedList.update({"language": localStorage.getItem("Language")});
+          savedList.update({ "language": localStorage.getItem("Language") });
           translateToEng();
         });
-        document.getElementById("langCn").addEventListener("click", function() {
+        document.getElementById("langCn").addEventListener("click", function () {
           localStorage.setItem("Language", "Cn");
-          savedList.update({"language": localStorage.getItem("Language")});
+          savedList.update({ "language": localStorage.getItem("Language") });
           translateToCn();
         });
 
@@ -30,7 +30,7 @@ firebase.auth().onAuthStateChanged((user) => {
             const savedCard = savedCardTemplate.content.cloneNode(true);
             let name = savedCard.querySelector(".card-title").innerText = element;
             savedCard.querySelector("a").setAttribute("href", "./restaurant.html?" + element);
-            
+
             // Gets the images for the restaurant
             const tempImg = savedCard.getElementById("restImg");
             tempImg.id = "restImg" + index;
@@ -48,11 +48,11 @@ firebase.auth().onAuthStateChanged((user) => {
 
             // Determine save button functions
             let saveBtn = savedCard.getElementById("btn-check-outlined");
-            saveBtn.addEventListener("click", function() {
+            saveBtn.addEventListener("click", function () {
               localStorage.setItem("restaurant name", name);
               let restName = localStorage.getItem("restaurant name");
               // Filter restaurant name (in card) from the user's saved restaurants database
-              let filterData = currentData.filter(function(result) {
+              let filterData = currentData.filter(function (result) {
                 return result != restName; // Returns a new array
               });
               // Removes restaurant from Saved if it's already on the list

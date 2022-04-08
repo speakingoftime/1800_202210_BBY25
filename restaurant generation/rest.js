@@ -34,7 +34,7 @@ const populateRestaurants = () => {
   }
 
   const uuidv4 = () => {
-    return ([1e7]+1e19).replace(/[018]/g, c =>
+    return ([1e7] + 1e19).replace(/[018]/g, c =>
       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
   }
 
@@ -49,7 +49,7 @@ const populateRestaurants = () => {
 
   const restaurants = [];
   const streetNames = ["Granville St", "Main St", "W Broadway", "Lougheed Hwy", "Alberni St", "Cambie Ave", "Victoria Dr", "Robson St"];
-  
+
   const openingHours = ["9:00AM", "10:00AM", "11:00AM", "11:30AM", "12:00PM", "12:30PM"];
   const closingHours = ["8:00PM", "9:00PM", "9:30PM", "10:00PM", "10:30PM", "11:00PM"];
   names.forEach((element, index) => {
@@ -73,12 +73,12 @@ const populateRestaurants = () => {
         up: genReview(true),
         down: genReview(false)
       },
-      address: Math.floor(Math.random() * 10000) + " " +  
-        streetNames[Math.floor(Math.random() * streetNames.length)] + ", V" +  
+      address: Math.floor(Math.random() * 10000) + " " +
+        streetNames[Math.floor(Math.random() * streetNames.length)] + ", V" +
         Math.floor(Math.random() * 9) +
-        String.fromCharCode(Math.floor(Math.random() * 26) + 65) + " " + 
+        String.fromCharCode(Math.floor(Math.random() * 26) + 65) + " " +
         Math.floor(Math.random() * 9) +
-        String.fromCharCode(Math.floor(Math.random() * 26) + 65) + 
+        String.fromCharCode(Math.floor(Math.random() * 26) + 65) +
         Math.floor(Math.random() * 9),
       phoneNumber: "+1 (604) 555-" + (Math.floor(Math.random() * 9999)),
       hours: "7 Days a Week " + openingHours[Math.floor(Math.random() * openingHours.length)] + " - " +

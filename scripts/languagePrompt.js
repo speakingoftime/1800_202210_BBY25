@@ -22,14 +22,14 @@ if (localStorage.getItem("Prompted") === null) {
         // Translate the page according to user's "Language" field setting
         if (snapshot.data().language) {
           console.log("User has a language setting");
-            if (snapshot.data().language === "Cn") {
+          if (snapshot.data().language === "Cn") {
             translateToCn();
           }
         } else {
 
           // User doesn't have a language setting
           // Add language from localstorage
-          docRef.update({"language": localStorage.getItem("Language")});
+          docRef.update({ "language": localStorage.getItem("Language") });
           console.log("Added language to user profile");
         }
       });
@@ -39,18 +39,18 @@ if (localStorage.getItem("Prompted") === null) {
       if (localStorage.getItem("Prompted") === "Ask again") {
         langPrompt.classList.toggle("show");
       }
-      document.getElementById("yesChangeLangBtn").addEventListener("click", function() {
+      document.getElementById("yesChangeLangBtn").addEventListener("click", function () {
         localStorage.setItem("Prompted", "true");
-        docRef.update({"language": localStorage.getItem("Language")});
+        docRef.update({ "language": localStorage.getItem("Language") });
       })
-      document.getElementById("langEng").addEventListener("click", function() {
+      document.getElementById("langEng").addEventListener("click", function () {
         localStorage.setItem("Language", "Eng");
-        docRef.update({"language": localStorage.getItem("Language")});
+        docRef.update({ "language": localStorage.getItem("Language") });
         translateToEng();
       });
-      document.getElementById("langCn").addEventListener("click", function() {
+      document.getElementById("langCn").addEventListener("click", function () {
         localStorage.setItem("Language", "Cn");
-        docRef.update({"language": localStorage.getItem("Language")});
+        docRef.update({ "language": localStorage.getItem("Language") });
         translateToCn();
       });
     } else {
@@ -71,21 +71,21 @@ if (localStorage.getItem("Prompted") === null) {
 
 // When the prompt is open
 // If user clicks Yes > choose option
-document.getElementById("yesChangeLangBtn").addEventListener("click", function() {
+document.getElementById("yesChangeLangBtn").addEventListener("click", function () {
   localStorage.setItem("Prompted", "true");
 })
-document.getElementById("langEng").addEventListener("click", function() {
+document.getElementById("langEng").addEventListener("click", function () {
   localStorage.setItem("Language", "Eng");
   translateToEng();
 });
-document.getElementById("langCn").addEventListener("click", function() {
+document.getElementById("langCn").addEventListener("click", function () {
   localStorage.setItem("Language", "Cn");
   translateToCn();
 });
 // If user clicks No, prompt closes, no translation, nothing else happens
 
 // If user clicks Later, update the localStorage
-document.getElementById("askLaterLangBtn").addEventListener("click", function() {
+document.getElementById("askLaterLangBtn").addEventListener("click", function () {
   localStorage.setItem("Prompted", "Ask again");
 });
 
@@ -112,7 +112,7 @@ function translateToCn() {
   document.getElementById("languageLabel").innerText = "不需要英文帮助";
   // Language prompt content
   document.getElementById("langBtn").innerHTML = document.getElementById("langBtn").innerHTML.replace('Language', '语言');
-  document.getElementById("offcanvasBottomLabel"). innerText = "改变语言";
+  document.getElementById("offcanvasBottomLabel").innerText = "改变语言";
   document.getElementById("yesChangeLangBtn").innerText = "确认";
   document.getElementById("noChangeLangBtn").innerText = "不用了，谢谢";
   document.getElementById("askLaterLangBtn").innerText = "稍后再问";
@@ -139,7 +139,7 @@ function translateToEng() {
   document.getElementById("languageLabel").innerText = "Little English Needed";
   // Language prompt content
   document.getElementById("langBtn").innerHTML = document.getElementById("langBtn").innerHTML.replace('语言', 'Language');
-  document.getElementById("offcanvasBottomLabel"). innerText = "Change language";
+  document.getElementById("offcanvasBottomLabel").innerText = "Change language";
   document.getElementById("yesChangeLangBtn").innerText = "Yes";
   document.getElementById("noChangeLangBtn").innerText = "No";
   document.getElementById("askLaterLangBtn").innerText = "Later";
