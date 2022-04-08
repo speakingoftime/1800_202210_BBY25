@@ -150,7 +150,6 @@ button {
   margin-top: -0.25em;
   margin-right: 0.5em;
 }
-
 #btn-check-outlined {
   position: absolute;
   top: 0;
@@ -225,7 +224,6 @@ button {
 #rest-ratings-content div:last-of-type > div {
   padding: 0.5em 0;
 }
-
 #reviewForm {
   display: none;
 }
@@ -238,7 +236,6 @@ button.saved.active{
 button.saved.active span {
   color: white;
 }
-
 button.saved {
   background-color: white;
   border-color: #dc3545;
