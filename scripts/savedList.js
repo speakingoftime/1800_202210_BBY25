@@ -1,10 +1,8 @@
 let saveBtn = document.getElementById("btn-check-outlined");
 let restName = localStorage.getItem("restaurant name");
-console.log(restName);
-let count = 0;
 
 function toggleSaveBtn() {
-  if (count === 0) {
+  if (!saveBtn.classList.contains("active")) {
     console.log("Saved");
     saveBtn.classList.add("active");
     saveBtn.querySelector(".saveIcon").innerText = "favorite";
@@ -16,9 +14,10 @@ function toggleSaveBtn() {
   };
 }
 
+// Checks if user is logged in and allow them to remove items from the Saved list
+// Otherwise, promt the user to login
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    var uid = user.uid;
     let savedList = db.collection("users").doc(user.uid);
 
     savedList.get().then((doc) => {
@@ -32,11 +31,11 @@ firebase.auth().onAuthStateChanged((user) => {
         });
         // If the restaurant is in the user's list, 
         // change the button's state to the appropriate one
-        if (match !== undefined) {
+        if (match) {
           saveBtn.classList.add("active");
           saveBtn.querySelector(".saveIcon").innerText = "favorite";
-          count = 1;
         }
+        
         // Add restaurant to user's saved list on click of button
         saveBtn.addEventListener("click", function() {
           toggleSaveBtn();
@@ -44,17 +43,15 @@ firebase.auth().onAuthStateChanged((user) => {
           let filterData = currentData.filter(function(result) {
             return result != restName; // Returns a new array
           });
-          if (count == 0) {
+          if (!saveBtn.classList.contains("active")) {
             let newData = [restName].concat(filterData);
             savedList.update({
               restaurants: newData
             });
-            count++;
-          } else if (count == 1) {
+          } else {
             savedList.update({
               restaurants: filterData
             });
-            count--;
           };
         });
       } else {
@@ -67,16 +64,9 @@ firebase.auth().onAuthStateChanged((user) => {
   } else {
     // User is signed out
     console.log("Not logged in");
-    let count = 0;
     saveBtn.addEventListener("click", function() {
       // Load modal prompting user to log in
       let loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
       loginModal.toggle(loginModal);
-      // Ensure the button does not look active while not logged in
-      if (count == 0) {
-        saveBtn.classList.remove("active");
-        saveBtn.querySelector(".saveIcon").innerText = "favorite_border";
-        count++;
-      };
   })};
 });
