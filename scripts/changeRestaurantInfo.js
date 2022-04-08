@@ -189,11 +189,13 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
 
         $("#reviewForm").submit(function () {
 
+          // Finds which button is clicked.
           const foodButton = ($('input[name=food]:checked').val())
           const valueButton = ($('input[name=value]:checked').val())
           const serviceButton = ($('input[name=service]:checked').val())
           const languageButton = ($('input[name=language]:checked').val())
 
+          // Check to see if buttons are clicked.
           if (foodButton == null ||
             valueButton == null ||
             serviceButton == null ||
@@ -203,6 +205,7 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
 
           } else {
 
+            // Delete field if exists.
             db.collection("restaurants").doc(docID).update({
               [`food.up.${userUID}`]: firebase.firestore.FieldValue.delete(),
               [`food.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
@@ -214,101 +217,35 @@ db.collection("restaurants").where("name", "==", restPageName).get().then((query
               [`language.down.${userUID}`]: firebase.firestore.FieldValue.delete(),
             });
 
-            if (foodButton == "up") {
-              db.collection("restaurants").doc(docID).set({
-                food: {
-                  up: {
-                    [userUID]: Date.now()
-                  }
+            // Sends the user UID as a key and the current date as the value.
+            db.collection("restaurants").doc(docID).set({
+              food: {
+                [foodButton]: {
+                  [user.uid]: Date.now()
                 }
-              }, {
-                merge: true
-              })
-            }
-            if (foodButton == "down") {
-              db.collection("restaurants").doc(docID).set({
-                food: {
-                  down: {
-                    [userUID]: Date.now()
-                  }
+              },
+              value: {
+                [valueButton]: {
+                  [user.uid]: Date.now()
                 }
-              }, {
-                merge: true
-              })
-            }
-            if (valueButton == "up") {
-              db.collection("restaurants").doc(docID).set({
-                value: {
-                  up: {
-                    [userUID]: Date.now()
-                  }
+              },
+              service: {
+                [serviceButton]: {
+                  [user.uid]: Date.now()
                 }
-              }, {
-                merge: true
-              })
-            }
-            if (valueButton == "down") {
-              db.collection("restaurants").doc(docID).set({
-                value: {
-                  down: {
-                    [userUID]: Date.now()
-                  }
+              },
+              language: {
+                [languageButton]: {
+                  [user.uid]: Date.now()
                 }
-              }, {
-                merge: true
-              })
-            }
-            if (serviceButton == "up") {
-              db.collection("restaurants").doc(docID).set({
-                service: {
-                  up: {
-                    [userUID]: Date.now()
-                  }
-                }
-              }, {
-                merge: true
-              })
-            }
-            if (serviceButton == "down") {
-              db.collection("restaurants").doc(docID).set({
-                service: {
-                  down: {
-                    [userUID]: Date.now()
-                  }
-                }
-              }, {
-                merge: true
-              })
-            }
-            if (languageButton == "up") {
-              db.collection("restaurants").doc(docID).set({
-                language: {
-                  up: {
-                    [userUID]: Date.now()
-                  }
-                }
-              }, {
-                merge: true
-              })
-            }
-            if (languageButton == "down") {
-              db.collection("restaurants").doc(docID).set({
-                language: {
-                  down: {
-                    [userUID]: Date.now()
-                  }
-                }
-              }, {
-                merge: true
-              })
-            }
-            console.log("submitted form");
-            // End of else
+              }
+            }, {
+              merge: true
+            })
           }
           alert("Thank you for submitting a review!")
           // End of function
         });
-
       } else {
         // User not logged in or has just logged out.
         reviewButton.addEventListener("click", function () {

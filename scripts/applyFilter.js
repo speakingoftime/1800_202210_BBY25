@@ -31,7 +31,6 @@ db.collection("restaurants").get()
     }
 
     // Auto-fill form from parsed url values
-
     const searchQuery = document.getElementById("searchBar");
     const valueChecked = document.getElementById("valueSwitch");
     const foodChecked = document.getElementById("foodSwitch");
@@ -45,7 +44,6 @@ db.collection("restaurants").get()
     languageChecked.checked = filters.language;
 
     // Filters
-
     const containsQueryFilter = (currRest) => {
       return currRest.name.toLowerCase().includes(filters.search.toLowerCase());
     }
@@ -67,7 +65,6 @@ db.collection("restaurants").get()
     }
 
     // Apply Filters
-
     let queryFilter = data.filter(containsQueryFilter);
 
     queryFilter = filters.value ? queryFilter.filter(valueFilter) : queryFilter;
@@ -76,7 +73,6 @@ db.collection("restaurants").get()
     queryFilter = filters.language ? queryFilter.filter(languageFilter) : queryFilter;
 
     // Create and append DOM elements
-
     if (queryFilter.length == 0) {
       const nothingFound = document.createElement("h2");
       nothingFound.innerText = "Nothing found.";
@@ -139,6 +135,8 @@ db.collection("restaurants").get()
     body.appendChild(translateScript);
   });
 
+// Calculates Recent Reviews
+// Displays emoticons to match the average
 const recentReviews = rest => {
   const oneMonth = 2628000000;
   const now = Date.now();

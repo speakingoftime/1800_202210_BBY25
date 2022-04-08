@@ -59,7 +59,6 @@ function translateToCn() {
   }
 }
 
-///////////////////////////////////////////////////
 function translateToCnSearch() {
   // Search bar
   document.getElementById("searchBar").setAttribute("placeholder", "搜索");
@@ -163,9 +162,6 @@ function translateToCnLoginPg() {
   document.getElementById("loginHeading").innerText = "登陆注册";
   document.getElementById("loader").innerText = "加载中...";
 }
-///////////////////////////////////////////////////
-///////////////////////////////////////////////////
-
 
 ///////////////////////////////////////////////////
 // Translate back to English in sections
@@ -209,7 +205,6 @@ function translateToEng() {
 
 }
 
-///////////////////////////////////////////////////
 function translateToEngSearch() {
   // Search bar
   document.getElementById("searchBar").setAttribute("placeholder", "Search");
@@ -315,5 +310,3 @@ function translateToEngLoginPg() {
   document.getElementById("loginHeading").innerText = "Log in";
   document.getElementById("loader").innerText = "Loading...";
 }
-///////////////////////////////////////////////////
-///////////////////////////////////////////////////
