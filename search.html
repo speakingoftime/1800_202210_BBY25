@@ -48,12 +48,14 @@
   <!-- Search -->
   <div class="container-fluid py-4" id="searchContainer">
     <form id="searchForm" class="container" action="./search.html">
+      <!-- Search bar -->
       <div class="input-group">
         <input id="searchBar" class="form-control rounded-0" name="search" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success text-nowrap d-flex mx-auto align-self-center" type="submit" id="searchBtn">
           <span class="material-icons my-auto">search</span>
         </button>
       </div>
+      <!-- Search filters -->
       <div class="row g-0 mt-4 px-3 py-2">
         <p id="filterDesc" class="m-0 px-0 py-2 fw-bold">Filter restaurants by:</p>
         <div class="row m-0 px-0 py-2">
@@ -89,6 +91,7 @@
   </div>
   <div class="p-4" id="resultsPlaceholder"></div>
 
+  <!-- Template for the dynamically generated search results -->
   <template id="cardTemplate">
     <div class="card w-100 mt-2 mb-5" style="width: 18rem;">
       <a href="./restaurant.html">
