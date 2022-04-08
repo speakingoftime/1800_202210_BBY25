@@ -1,35 +1,41 @@
 
 const langPrompt = document.getElementById("offcanvasBottom");
+
 // Check if user has first visited by checking if there's a "Prompt" key in localStorage
 if (localStorage.getItem("Prompted") === null) {
   langPrompt.classList.toggle("show");
   localStorage.setItem("Prompted", "true");
   localStorage.setItem("Language", "Eng");
 } else {
+
   // User has visited before
-  // If user is logged in, save / get the language from their profile
+  // If user is logged in, save and/or get the language from their profile
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      // Check if there's a "Language" field in user's profile
       let docRef = db.collection("users").doc(user.uid);
-      
       docRef.get().then(snapshot => {
+
+        // Add user's name to the Welcome Message
         let userName = snapshot.data().name;
         document.getElementById("user-name-here").innerHTML = ", <br/>" + userName;
+
+        // Translate the page according to user's "Language" field setting
         if (snapshot.data().language) {
           console.log("User has a language setting");
             if (snapshot.data().language === "Cn") {
             translateToCn();
           }
         } else {
+
           // User doesn't have a language setting
           // Add language from localstorage
           docRef.update({"language": localStorage.getItem("Language")});
           console.log("Added language to user profile");
         }
       });
-      // If user has selected "Ask later" when they first visited, logged in,
-      // then visited the index.html again, update the language to localStorage AND their profile
+
+      // If user has selected "Ask later" when they first visited, logged in, and visited index.html again
+      // Keep localStorage AND their profile language settings consistent and up-to-date
       if (localStorage.getItem("Prompted") === "Ask again") {
         langPrompt.classList.toggle("show");
       }
@@ -48,6 +54,7 @@ if (localStorage.getItem("Prompted") === null) {
         translateToCn();
       });
     } else {
+
       // User not signed in
       // Get the language setting from localStorage
       if (localStorage.getItem("Prompted") === "Ask again") {
@@ -75,8 +82,9 @@ document.getElementById("langCn").addEventListener("click", function() {
   localStorage.setItem("Language", "Cn");
   translateToCn();
 });
-// If user clicks No, prompt closes, no translation
-// If user clicks Later
+// If user clicks No, prompt closes, no translation, nothing else happens
+
+// If user clicks Later, update the localStorage
 document.getElementById("askLaterLangBtn").addEventListener("click", function() {
   localStorage.setItem("Prompted", "Ask again");
 });
